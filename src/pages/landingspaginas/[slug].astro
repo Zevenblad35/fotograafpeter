@@ -1,0 +1,321 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Faq from '../../components/Faq.astro';
+import CtaBlock from '../../components/CtaBlock.astro';
+import { SITE } from '../../config';
+import type { LandingData } from '../../data/landings';
+
+// ----- Statische paden via getStaticPaths -----
+// Eén template, alle landingspagina's automatisch gegenereerd.
+// Voeg een entry toe in src/data/landings.ts en een nieuwe pagina ontstaat.
+
+export async function getStaticPaths() {
+  const { landingsData } = await import('../../data/landings');
+  return landingsData.map((data) => ({
+    params: { slug: data.slug },
+    props: data,
+  }));
+}
+
+const data = Astro.props as LandingData;
+
+const location = data.city || data.region;
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: "Landingspagina's", href: '#' },
+  { name: data.h1, href: `/landingspaginas/${data.slug}/` },
+];
+
+// FAQ per landingspagina — context-specifiek
+const faqItems = [
+  {
+    question: `Werkt Fotograaf Peter ook in ${location}?`,
+    answer: `Ja. ${location} ligt binnen mijn standaard werkgebied. Vanuit Nijverdal kom ik graag jouw kant op voor een shoot — geen reiskosten voor opdrachten in de regio Twente en Overijssel.`,
+  },
+  {
+    question: `Hoe boek ik een shoot vanuit ${location}?`,
+    answer: `Stuur me een bericht via het <a href="/contact/" class="link-inline">contactformulier</a>, mail naar <a href="mailto:${SITE.contact.email}" class="link-inline">${SITE.contact.email}</a> of bel ${SITE.contact.phoneDisplay}. We stemmen kort af wat je nodig hebt en plannen een datum.`,
+  },
+  {
+    question: 'Wat kost een shoot?',
+    answer: `Tarieven hangen af van de dienst (bedrijfsfotografie, personal branding, reclame, honden), de omvang en de locatie. Voor hondenfotografie hanteer ik een bewust laag tarief. Voor bedrijfsfotografie werk ik met dagdelen of dagtarieven inclusief nabewerking. Stuur me een berichtje en ik maak een eerlijke offerte.`,
+  },
+  {
+    question: 'Wat is de levertijd?',
+    answer: `Standaard <strong>10 werkdagen</strong> na de shoot. Heb je het sneller nodig (lancering, deadline), zeg het — dan kijken we wat mogelijk is.`,
+  },
+];
+
+// Service-aanbevelingen in zijbalk
+const serviceLinks = [
+  { label: 'Bedrijfsfotografie', href: '/bedrijfsfotografie/', desc: "Teamfoto's, sfeer, aan-het-werk-beelden." },
+  { label: 'Personal Branding', href: '/personal-branding/', desc: 'Sterke portretten voor jouw merk.' },
+  { label: 'Reclamefotografie', href: '/reclamefotografie/', desc: 'Product, food, interieur en campagnes.' },
+  { label: 'Hondenfotografie', href: '/honden/', desc: 'Speelse beelden van jouw trouwe vriend.' },
+];
+
+const serviceLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${SITE.url}/landingspaginas/${data.slug}/#service`,
+  serviceType: data.service,
+  name: data.h1,
+  description: data.description,
+  provider: { '@id': `${SITE.url}/#business` },
+  areaServed: {
+    '@type': data.city ? 'City' : 'AdministrativeArea',
+    name: location,
+  },
+};
+---
+
+<BaseLayout
+  title={data.title}
+  description={data.description}
+  canonicalPath={`/landingspaginas/${data.slug}/`}
+  pageType="Service"
+  breadcrumbs={breadcrumbs}
+  extraJsonLd={[serviceLd]}
+>
+  <PageHeader
+    eyebrow={`Lokale dienst · ${location}`}
+    title={data.h1}
+    description={data.intro}
+    breadcrumbs={breadcrumbs}
+  />
+
+  <section class="landing-body">
+    <div class="container landing-grid">
+      <article class="landing-prose">
+        <h2>Wat ik voor {location} doe</h2>
+        <p>
+          {location} kent z'n eigen ritme en eigen ondernemers. Wat geldt voor heel mijn werk
+          geldt ook hier: ik wil dat de beelden <em>kloppen</em> bij wie of wat ze
+          tonen. Geen stock, geen standaard.
+        </p>
+        <p>
+          Vanuit mijn basis in <strong>Nijverdal</strong> ben ik snel in {location}. Voor een
+          bedrijfsshoot, een personal branding sessie, een productfotografie-opdracht of een
+          hondenshoot — alles is mogelijk.
+        </p>
+
+        <h2>Werkgebied</h2>
+        <p>
+          Naast {location} werk ik in: <strong>{SITE.serviceArea.filter(a => a !== location).join(', ')}</strong>.
+          Reiskosten binnen Twente en Overijssel reken ik niet door.
+        </p>
+
+        <h2>Hoe het werkt</h2>
+        <ol class="landing-steps">
+          <li>
+            <strong>Korte kennismaking.</strong> Bel of mail. Vertel wat je wilt fotograferen,
+            voor welk doel en wanneer ongeveer. Geen verkooppraat.
+          </li>
+          <li>
+            <strong>Offerte.</strong> Binnen één werkdag stuur ik een transparante offerte met
+            tijd, locatie, levering en prijs.
+          </li>
+          <li>
+            <strong>De shoot.</strong> Op locatie in {location} of op een plek die past
+            bij je verhaal. Rustig tempo, geen geforceerde poses.
+          </li>
+          <li>
+            <strong>Levering.</strong> Binnen 10 werkdagen krijg je een online galerij met
+            bewerkte foto's in alle benodigde beeldverhoudingen.
+          </li>
+        </ol>
+
+        <div class="landing-cta-inline">
+          <a href="/contact/" class="btn btn-primary">
+            Plan een shoot in {location}
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </article>
+
+      <aside class="landing-side">
+        <div class="side-card">
+          <span class="eyebrow">Direct contact</span>
+          <ul class="side-contact">
+            <li>
+              <span class="label">Telefoon</span>
+              <a href={`tel:${SITE.contact.phone}`}>{SITE.contact.phoneDisplay}</a>
+            </li>
+            <li>
+              <span class="label">E-mail</span>
+              <a href={`mailto:${SITE.contact.email}`}>{SITE.contact.email}</a>
+            </li>
+            <li>
+              <span class="label">Adres</span>
+              <span>{SITE.contact.address.street}<br />{SITE.contact.address.postalCode} {SITE.contact.address.city}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="side-card">
+          <span class="eyebrow">Mijn diensten</span>
+          <ul class="side-services">
+            {serviceLinks.map(link => (
+              <li>
+                <a href={link.href}>
+                  <span class="service-name">{link.label}</span>
+                  <span class="service-tag">{link.desc}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <Faq title={`Veelgestelde vragen over fotografie in ${location}`} items={faqItems} />
+
+  <CtaBlock
+    eyebrow={`Fotograaf gezocht in ${location}?`}
+    title="Laten we kennismaken"
+    description={`Vertel me kort over je project — ik reageer binnen één werkdag met een eerlijk plan.`}
+  />
+</BaseLayout>
+
+<style>
+  .landing-body {
+    padding-block: clamp(3rem, 6vw, 5rem);
+  }
+
+  .landing-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+
+  @media (max-width: 900px) {
+    .landing-grid { grid-template-columns: 1fr; }
+  }
+
+  .landing-prose {
+    max-width: 65ch;
+  }
+  .landing-prose h2 {
+    font-size: clamp(1.5rem, 1.5vw + 1rem, 2.1rem);
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .landing-prose h2:first-child { margin-top: 0; }
+  .landing-prose p {
+    color: var(--color-ink-soft);
+    margin-bottom: 1.25rem;
+  }
+  .landing-prose em { color: var(--color-accent); }
+  .landing-prose strong { color: var(--color-ink); }
+
+  .landing-steps {
+    list-style: none;
+    counter-reset: step;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0 2rem;
+  }
+  .landing-steps li {
+    counter-increment: step;
+    padding: 1.25rem 1.25rem 1.25rem 3.5rem;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius);
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--color-ink-soft);
+  }
+  .landing-steps li::before {
+    content: '0' counter(step);
+    position: absolute;
+    left: 1.25rem;
+    top: 1.15rem;
+    font-family: var(--font-display);
+    color: var(--color-accent);
+    font-size: 1rem;
+  }
+  .landing-steps strong { color: var(--color-ink); }
+
+  .landing-cta-inline {
+    margin-top: 2rem;
+  }
+
+  .landing-side {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-self: start;
+    position: sticky;
+    top: 6rem;
+  }
+
+  @media (max-width: 900px) {
+    .landing-side { position: static; }
+  }
+
+  .side-card {
+    padding: 1.5rem;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-lg);
+  }
+  .side-card .eyebrow { margin-bottom: 1rem; }
+
+  .side-contact {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .side-contact li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.92rem;
+  }
+  .side-contact .label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-ink-muted);
+  }
+  .side-contact a {
+    color: var(--color-ink);
+    transition: color var(--t);
+  }
+  .side-contact a:hover { color: var(--color-accent); }
+
+  .side-services {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .side-services a {
+    display: flex;
+    flex-direction: column;
+    padding: 0.85rem 1rem;
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    transition: all var(--t);
+    border: 1px solid transparent;
+  }
+  .side-services a:hover {
+    border-color: var(--color-accent);
+    transform: translateX(2px);
+  }
+  .service-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--color-ink);
+  }
+  .service-tag {
+    font-size: 0.78rem;
+    color: var(--color-ink-muted);
+    margin-top: 0.2rem;
+  }
+</style>

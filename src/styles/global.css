@@ -1,0 +1,277 @@
+/* =================================================================
+   Fotograaf Peter — Design System
+   Editorial, warm, fotografie-passend. Niet generiek.
+   ================================================================= */
+
+:root {
+  /* Kleuren — warm, ingehouden, fotografie-vriendelijk */
+  --color-bg: #f5f1ea;          /* warm crème, papier */
+  --color-bg-alt: #ebe4d7;       /* tweede tint voor zones */
+  --color-surface: #ffffff;
+  --color-ink: #1a1814;          /* bijna-zwart, warm */
+  --color-ink-soft: #4a443c;
+  --color-ink-muted: #7a7268;
+  --color-accent: #8b5a2b;       /* sepia/walnoot */
+  --color-accent-deep: #5c3b1c;
+  --color-line: #d9d0c0;
+  --color-highlight: #c89b6a;
+
+  /* Typografie */
+  --font-display: 'Fraunces', 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+  --font-body: 'Inter Tight', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Spacing schaal */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  /* Layout */
+  --max-w: 1280px;
+  --max-w-prose: 68ch;
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 16px;
+
+  /* Transities */
+  --t-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --t: 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  --t-slow: 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--color-ink);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img, picture, svg, video { display: block; max-width: 100%; height: auto; }
+
+a { color: inherit; text-decoration: none; }
+
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+/* Typografie */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  font-feature-settings: 'ss01' 1, 'ss02' 1;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw + 1rem, 5.5rem);
+  font-weight: 300;
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  font-size: clamp(2rem, 3.5vw + 1rem, 3.5rem);
+  font-weight: 350;
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  font-size: clamp(1.4rem, 1.5vw + 0.8rem, 2rem);
+  font-weight: 400;
+}
+
+h4 { font-size: 1.25rem; font-weight: 500; }
+
+p { max-width: var(--max-w-prose); }
+
+em, .italic {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Eyebrow / kicker label */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+/* Container & layout */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+.container-prose {
+  max-width: 75ch;
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+section { padding-block: clamp(3rem, 8vw, 6rem); }
+
+/* Links */
+.link-inline {
+  position: relative;
+  color: var(--color-ink);
+  border-bottom: 1px solid var(--color-line);
+  transition: border-color var(--t), color var(--t);
+}
+.link-inline:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.6rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  transition: all var(--t);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--color-ink);
+  color: var(--color-bg);
+}
+.btn-primary:hover {
+  background: var(--color-accent-deep);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-ink);
+}
+.btn-secondary:hover {
+  background: var(--color-ink);
+  color: var(--color-bg);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  padding-inline: 0;
+  border-bottom: 1px solid var(--color-ink);
+  border-radius: 0;
+}
+.btn-ghost:hover { color: var(--color-accent); border-color: var(--color-accent); }
+
+/* Pijl in button */
+.btn .arrow {
+  display: inline-block;
+  transition: transform var(--t);
+}
+.btn:hover .arrow { transform: translateX(4px); }
+
+/* Decoratieve elementen */
+.divider {
+  height: 1px;
+  background: var(--color-line);
+  margin-block: var(--space-7);
+}
+
+.rule-vertical {
+  width: 1px;
+  background: var(--color-line);
+  align-self: stretch;
+}
+
+/* Skip link voor accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-ink);
+  color: var(--color-bg);
+  padding: 0.75rem 1rem;
+  z-index: 100;
+  transition: top var(--t);
+}
+.skip-link:focus { top: 0; }
+
+/* Animaties */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.reveal {
+  animation: fadeUp 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.reveal-delay-1 { animation-delay: 100ms; }
+.reveal-delay-2 { animation-delay: 200ms; }
+.reveal-delay-3 { animation-delay: 320ms; }
+.reveal-delay-4 { animation-delay: 460ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus stijlen */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Selectie */
+::selection {
+  background: var(--color-ink);
+  color: var(--color-bg);
+}
+
+/* Print */
+@media print {
+  body { background: white; color: black; }
+  header, footer, .no-print { display: none; }
+}

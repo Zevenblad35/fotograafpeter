@@ -1,0 +1,218 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+import { SITE } from '../config';
+
+const title = 'Over Fotograaf Peter | Peter Rutgers uit Nijverdal';
+const description = 'Maak kennis met Peter Rutgers. Fotograaf in Nijverdal, gespecialiseerd in bedrijfsfotografie, personal branding, reclamefotografie en hondenfotografie in Twente en Overijssel.';
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Over Peter', href: '/over-peter/' },
+];
+
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Peter Rutgers',
+  alternateName: 'Fotograaf Peter',
+  jobTitle: 'Fotograaf',
+  worksFor: { '@id': `${SITE.url}/#business` },
+  description:
+    'Peter Rutgers (Fotograaf Peter) is fotograaf in Nijverdal en gespecialiseerd in bedrijfsfotografie, personal branding, reclamefotografie en hondenfotografie in Twente en Overijssel.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Nijverdal',
+    addressRegion: 'Overijssel',
+    addressCountry: 'NL',
+  },
+  knowsAbout: [
+    'Bedrijfsfotografie',
+    'Personal branding fotografie',
+    'Reclamefotografie',
+    'Productfotografie',
+    'Hondenfotografie',
+    'Sociale fotografie',
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/over-peter/"
+  pageType="AboutPage"
+  breadcrumbs={breadcrumbs}
+  extraJsonLd={[personLd]}
+>
+  <PageHeader
+    eyebrow="Over Peter"
+    title="De fotograaf achter het moment"
+    description="Van familieshoots in 2016 tot bedrijfsbeelden voor merken vandaag — dit is het verhaal van Peter Rutgers en Fotograaf Peter."
+    breadcrumbs={breadcrumbs}
+  />
+
+  <article class="story-section">
+    <div class="container story-layout">
+      <aside class="story-aside">
+        <dl class="story-meta">
+          <dt>Naam</dt>
+          <dd>Peter Rutgers</dd>
+          <dt>Bedrijf</dt>
+          <dd>Peter Rutgers Media</dd>
+          <dt>Sinds</dt>
+          <dd>2016 als Fotograaf Peter</dd>
+          <dt>Basis</dt>
+          <dd>Nijverdal, Overijssel</dd>
+          <dt>Specialisatie</dt>
+          <dd>Bedrijf, Personal branding, Reclame, Honden</dd>
+          <dt>Werkgebied</dt>
+          <dd>Twente, Overijssel, Salland</dd>
+        </dl>
+      </aside>
+
+      <div class="story-prose">
+        <h2>Het begin</h2>
+        <p>
+          Het is begonnen binnen de familie. Een verjaardag, een doop, een dagje uit —
+          ik wilde dingen vastleggen die <em>niet poseerden</em>. Dat klikte. Vrienden
+          en kennissen vroegen of ik ook bij hen wilde komen. Toen er ook onbekenden
+          binnenkwamen, was het tijd voor een naam: eerst <strong>Fotograaf Oom Peter</strong>,
+          vanaf najaar 2016 simpelweg <strong>Fotograaf Peter</strong>. Duidelijk.
+          Herkenbaar. Voor iedereen.
+        </p>
+
+        <h2>Wat me drijft</h2>
+        <p>
+          Een foto is een momentopname. Maar het is de optelsom van die fracties die
+          bepaalt hoe we terugkijken — op een dag, een relatie, een mijlpaal, een
+          emotie. Als fotograaf zoek ik naar dié ene fractie die beeldbepalend is.
+          <em>Hét moment.</em>
+        </p>
+        <p>
+          Baby's, kinderen, jongeren, volwassenen, ouderen — we zijn altijd in beweging.
+          Mijn werk is om die beweging stil te zetten op het moment waarop er iets
+          eerlijks gebeurt.
+        </p>
+
+        <h2>De zakelijke kant</h2>
+        <p>
+          De afgelopen jaren is mijn werk doorgegroeid naar de zakelijke wereld. Voor
+          ondernemers, mkb-bedrijven en merken in Nijverdal, Twente en heel Overijssel
+          maak ik <strong>bedrijfsfotografie</strong>, <strong>personal branding</strong>,
+          en <strong>reclamefotografie</strong> (interieur, product, food).
+        </p>
+        <p>
+          Wat blijft: de manier van werken. Geen geforceerde poses, geen stockgevoel,
+          geen onnodig gladde nabewerking. Ik wil dat klanten op de foto's hun eigen
+          mensen, hun eigen bedrijf, hun eigen producten herkennen — alleen dan op
+          z'n best.
+        </p>
+
+        <h2>Honden</h2>
+        <p>
+          En dan blijven er de honden. Honden zijn familie, en dat verdient
+          professionele beelden. Daarom doe ik <a href="/honden/" class="link-inline">hondenfotografie</a>
+          bewust tegen een gereduceerd tarief — zodat ook iemand met een
+          klein budget mooie foto's van z'n trouwe vriend kan hebben.
+        </p>
+
+        <h2>Werken we samen?</h2>
+        <p>
+          Geen verkoopgesprek, geen pakketten waar je doorheen moet ploegen. Bel of mail,
+          dan praten we erover. Daarna stuur ik je een eerlijke offerte.
+        </p>
+
+        <div class="story-actions">
+          <a href="/contact/" class="btn btn-primary">
+            Maak een afspraak <span class="arrow">→</span>
+          </a>
+          <a href="/bedrijfsfotografie/" class="btn btn-secondary">Bekijk bedrijfsfotografie</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <CtaBlock
+    eyebrow="Direct contact"
+    title="Bel gewoon. Of mail."
+    description="Het werkt nog altijd het lekkerst. Geen formuliertjes, geen wachten."
+  />
+</BaseLayout>
+
+<style>
+  .story-section {
+    padding-block: clamp(3rem, 6vw, 5rem);
+  }
+
+  .story-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  @media (max-width: 800px) {
+    .story-layout { grid-template-columns: 1fr; }
+  }
+
+  .story-aside {
+    position: sticky;
+    top: 6rem;
+    align-self: start;
+  }
+
+  .story-meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 1.5rem;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-lg);
+    margin: 0;
+  }
+  .story-meta dt {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-ink-muted);
+    margin-top: 1rem;
+  }
+  .story-meta dt:first-child { margin-top: 0; }
+  .story-meta dd {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    line-height: 1.3;
+    margin: 0.35rem 0 0;
+    color: var(--color-ink);
+  }
+
+  .story-prose {
+    max-width: 65ch;
+  }
+
+  .story-prose h2 {
+    font-size: clamp(1.5rem, 1.5vw + 1rem, 2rem);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .story-prose h2:first-child { margin-top: 0; }
+
+  .story-prose p {
+    color: var(--color-ink-soft);
+    margin-bottom: 1.25rem;
+    max-width: 65ch;
+    line-height: 1.7;
+  }
+
+  .story-prose em {
+    color: var(--color-accent);
+  }
+
+  .story-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+</style>

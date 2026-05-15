@@ -1,0 +1,313 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Faq from '../components/Faq.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+import { SITE } from '../config';
+
+const title = 'Bedrijfsfotografie Nijverdal & Twente | Fotograaf Peter';
+const description = 'Bedrijfsfotografie in Nijverdal, Twente en Overijssel. Authentieke teamfoto\'s, zakelijke portretten en aan-het-werk-beelden voor websites, LinkedIn en jaarverslagen. Geen stock — wel professioneel.';
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Bedrijfsfotografie', href: '/bedrijfsfotografie/' },
+];
+
+const serviceLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${SITE.url}/bedrijfsfotografie/#service`,
+  serviceType: 'Bedrijfsfotografie',
+  name: 'Bedrijfsfotografie Nijverdal & Twente',
+  description: description,
+  provider: { '@id': `${SITE.url}/#business` },
+  areaServed: SITE.serviceArea.map((a) => ({ '@type': 'City', name: a })),
+  audience: {
+    '@type': 'BusinessAudience',
+    audienceType: 'Bedrijven, ZZP, MKB',
+  },
+};
+
+const includes = [
+  { title: 'Zakelijke portretten', desc: 'Voor team, website en LinkedIn — herkenbaar en consistent.' },
+  { title: 'Sfeer & locatie', desc: 'Hoe ziet jouw werkplek eruit? Welke energie hangt er?' },
+  { title: 'Aan-het-werk beelden', desc: 'Mensen in beweging, gefocust, in hun element.' },
+  { title: 'Team & cultuur', desc: 'Groepsfoto\'s die niet gewrongen aanvoelen.' },
+  { title: 'Producten in context', desc: 'Wat maak je, en hoe komt het tot stand?' },
+  { title: 'Events & opening', desc: 'Bedrijfsmomenten zoals jubilea, openingen, lanceringen.' },
+];
+
+const faqItems = [
+  {
+    question: 'Wat kost bedrijfsfotografie in Nijverdal?',
+    answer: `De prijs hangt af van de omvang. Voor een korte sessie (één persoon, één locatie, 1 uur) ben je een paar honderd euro kwijt; voor een hele dag op locatie met team, sfeer en producten loopt het op. Vaak werk ik met <strong>dagdelen</strong> en <strong>dagtarieven</strong> inclusief nabewerking. Vraag een offerte aan — dan reken ik het door op basis van wat jij écht nodig hebt.`,
+  },
+  {
+    question: 'Hoeveel foto\'s krijg ik?',
+    answer: `Bij een dagdeelshoot lever ik standaard 25–40 bewerkte beelden, bij een hele dag 60–100. Belangrijker dan aantal is dat je écht bruikbare beelden krijgt: bewust geselecteerd, perfect uitgewerkt en in verschillende beeldverhoudingen (staand voor LinkedIn, liggend voor de website, vierkant voor social).`,
+  },
+  {
+    question: 'Komt Peter naar onze locatie of moeten wij naar de studio?',
+    answer: `Voor bedrijfsfotografie kom ik <strong>vrijwel altijd op locatie</strong>. Jouw kantoor, werkplaats, winkel of bouwplaats vertelt het echte verhaal — een neutrale studio doet dat juist niet. Voor strakke portretten kunnen we de studio gebruiken, óf een rustig hoekje op jullie eigen locatie inrichten.`,
+  },
+  {
+    question: 'Hoe lang duurt een bedrijfsshoot?',
+    answer: `Een snelle ronde portretten van 2–3 medewerkers kan in 1 uur. Een complete bedrijfsshoot (team + sfeer + producten + aan-het-werk) duurt een halve tot hele dag. Voor grote teams (>15 personen) plan ik liever ruimer in zodat niemand gehaast voor de camera staat.`,
+  },
+  {
+    question: 'Mogen we de foto\'s overal gebruiken?',
+    answer: `Ja. Je krijgt een <strong>ruim gebruiksrecht</strong> voor je website, social media, advertenties, drukwerk en interne communicatie. Heb je heel specifieke commerciële plannen (landelijke campagne, OOH-advertising), dan stem ik dat van tevoren met je af — soms gelden daar andere licenties voor.`,
+  },
+  {
+    question: 'Voor welke bedrijven werk je het meest?',
+    answer: `Voor <strong>mkb en zzp</strong> in Twente en Overijssel — denk aan bouw, installatie, retail, horeca, zorg, dienstverlening, e-commerce en coachingspraktijken. Geen sector is te klein; geen onderwerp te alledaags.`,
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/bedrijfsfotografie/"
+  pageType="Service"
+  breadcrumbs={breadcrumbs}
+  extraJsonLd={[serviceLd]}
+>
+  <PageHeader
+    eyebrow="Dienst № 01"
+    title="Bedrijfsfotografie die níet stockt"
+    description="Voor zzp'ers en bedrijven in Nijverdal, Twente en Overijssel die beelden willen die kloppen bij wie ze echt zijn. Geen gladde gepoetste glimlach. Wél professioneel."
+    breadcrumbs={breadcrumbs}
+  />
+
+  <section class="lead-section">
+    <div class="container lead-grid">
+      <div class="lead-text">
+        <p class="lead">
+          Veel ondernemers investeren tijd en geld in hun website. En zetten er vervolgens
+          beelden op die <em>iedereen</em> ook gebruikt. Mensen prikken daar zo doorheen.
+        </p>
+        <p>
+          Goede bedrijfsfotografie laat zien hoe het bij jullie ruikt, klinkt en werkt.
+          Wie er rondloopt. Hoe een product ontstaat. Wat er speelt op een gemiddelde
+          dinsdagochtend. Dát maakt een website levend en helpt mensen sneller
+          beslissen of ze met jullie zaken willen doen.
+        </p>
+        <p>
+          Als <strong>zakelijke fotograaf in Nijverdal</strong> werk ik voor mkb,
+          zzp en lokale merken — van eenmanszaken tot complete teams. We maken
+          beelden die je écht gebruikt.
+        </p>
+      </div>
+      <aside class="lead-aside">
+        <span class="eyebrow">Goed om te weten</span>
+        <ul>
+          <li>Op locatie in Nijverdal, Twente en Overijssel</li>
+          <li>Dagdelen of dagtarief — geen verrassingen</li>
+          <li>Levering binnen 10 werkdagen</li>
+          <li>Ruim gebruiksrecht voor web, social & print</li>
+          <li>Werkt voor: bouw, retail, zorg, horeca, e-commerce</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="includes-section">
+    <div class="container">
+      <div class="includes-head">
+        <span class="eyebrow">Wat zit er in</span>
+        <h2>Bedrijfsfotografie is breder dan je denkt</h2>
+        <p>Een paar richtingen die we kunnen combineren — afhankelijk van wat jouw bedrijf nodig heeft.</p>
+      </div>
+      <ul class="includes-grid">
+        {includes.map((item, i) => (
+          <li class="include-item">
+            <span class="include-num">0{i + 1}</span>
+            <h3>{item.title}</h3>
+            <p>{item.desc}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="container">
+      <div class="process-head">
+        <span class="eyebrow">Werkwijze</span>
+        <h2>Drie stappen — geen ingewikkelde flow</h2>
+      </div>
+      <ol class="process-steps">
+        <li>
+          <span class="step-num">01</span>
+          <h3>Kennismaken</h3>
+          <p>Korte call of bak koffie. Wat is je bedrijf, wat wil je laten zien, voor welk kanaal?
+          Geen verkooppraat. Daarna een offerte op maat.</p>
+        </li>
+        <li>
+          <span class="step-num">02</span>
+          <h3>De shoot</h3>
+          <p>Ik kom langs op locatie. Rustig tempo, geen lange poses, geen geforceerde sfeer.
+          Iedereen vergeet binnen vijf minuten dat ik er ben.</p>
+        </li>
+        <li>
+          <span class="step-num">03</span>
+          <h3>Selectie & levering</h3>
+          <p>Binnen 10 werkdagen krijg je een online galerij met bewerkte foto's
+          in verschillende beeldverhoudingen. Klaar voor je website, social en print.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <Faq items={faqItems} />
+
+  <CtaBlock
+    eyebrow="Klaar voor je nieuwe bedrijfsfoto's?"
+    title="Vraag een offerte aan"
+    description="Vertel kort waar je aan denkt — locatie, doel, ongeveer het budget. Ik reageer binnen één werkdag."
+  />
+</BaseLayout>
+
+<style>
+  .lead-section {
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+  }
+  .lead-grid {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+  @media (max-width: 800px) { .lead-grid { grid-template-columns: 1fr; } }
+
+  .lead-text .lead {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 1.5vw + 0.9rem, 1.7rem);
+    line-height: 1.4;
+    font-weight: 350;
+    margin-bottom: 1.5rem;
+    max-width: 30ch;
+    letter-spacing: -0.015em;
+  }
+  .lead-text em { color: var(--color-accent); }
+  .lead-text p {
+    color: var(--color-ink-soft);
+    margin-bottom: 1.25rem;
+    max-width: 55ch;
+  }
+
+  .lead-aside {
+    padding: 1.75rem;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-lg);
+    align-self: start;
+  }
+  .lead-aside ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .lead-aside li {
+    font-size: 0.92rem;
+    color: var(--color-ink-soft);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+  .lead-aside li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  .includes-section {
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+    background: var(--color-bg-alt);
+  }
+  .includes-head {
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+  .includes-head h2 { margin-top: 1rem; }
+  .includes-head p {
+    margin-top: 1rem;
+    color: var(--color-ink-soft);
+  }
+
+  .includes-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .include-item {
+    padding: 1.75rem;
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--color-line);
+    transition: all var(--t);
+  }
+  .include-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-accent);
+  }
+  .include-num {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--color-accent);
+  }
+  .include-item h3 {
+    font-size: 1.2rem;
+    margin: 0.6rem 0 0.5rem;
+  }
+  .include-item p {
+    font-size: 0.92rem;
+    color: var(--color-ink-soft);
+    margin: 0;
+  }
+
+  .process-section {
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+  }
+
+  .process-head {
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+  .process-head h2 { margin-top: 1rem; }
+
+  .process-steps {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    counter-reset: step;
+  }
+  @media (max-width: 760px) {
+    .process-steps { grid-template-columns: 1fr; }
+  }
+  .process-steps li {
+    padding: 2rem 1.75rem;
+    border-top: 2px solid var(--color-ink);
+  }
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    letter-spacing: 0.05em;
+  }
+  .process-steps h3 {
+    font-size: 1.4rem;
+    margin: 0.75rem 0 1rem;
+  }
+  .process-steps p {
+    color: var(--color-ink-soft);
+    font-size: 0.95rem;
+  }
+</style>

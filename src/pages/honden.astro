@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Faq from '../components/Faq.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+import { SITE } from '../config';
+
+const title = 'Hondenfotografie Nijverdal & Twente | Fotograaf Peter';
+const description = 'Hondenfotografie in Nijverdal, Twente en Overijssel. Geduldige, liefdevolle aanpak — speelse foto\'s en portretten van jouw hond. Tegen een vriendelijk tarief.';
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Honden', href: '/honden/' },
+];
+
+const serviceLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${SITE.url}/honden/#service`,
+  serviceType: 'Hondenfotografie',
+  name: 'Hondenfotografie Nijverdal',
+  description,
+  provider: { '@id': `${SITE.url}/#business` },
+  areaServed: SITE.serviceArea.map((a) => ({ '@type': 'City', name: a })),
+};
+
+const faqItems = [
+  {
+    question: 'Waar fotografeer je honden?',
+    answer: `Het liefst <strong>buiten</strong>, op een locatie waar je hond zich vrij voelt — een bos, een veld, een plekje waar hij of zij vaak komt. In Twente hebben we daar de mooiste opties voor. In Nijverdal en omgeving zijn er prachtige plekken zoals de Sallandse Heuvelrug. Ook bij jou thuis of in en rond je tuin werkt vaak heel goed.`,
+  },
+  {
+    question: 'Mijn hond luistert niet zo goed. Lukt het dan?',
+    answer: `Vrijwel altijd. Mijn aanpak is <strong>geduldig en zonder druk</strong>. We werken met snoepjes, speeltjes, en bovenal: rustig de tijd nemen. Een shoot duurt geen half uur — we hebben de tijd om de hond te laten wennen, even te spelen, en dan op het juiste moment de foto te maken.`,
+  },
+  {
+    question: 'Wat kost een hondenfotoshoot?',
+    answer: `Ik hanteer voor hondenfotografie bewust een <strong>gereduceerd tarief</strong>. Iedereen verdient mooie foto's van z'n hond — niet alleen wie er een hoog budget voor heeft. Stuur me een berichtje voor de actuele prijslijst en wat erin zit.`,
+  },
+  {
+    question: 'Welke foto\'s krijg ik?',
+    answer: `Een mix van <strong>spontane actie</strong> (rennen, spelen, snuffelen), <strong>portretten</strong> (waarop het karakter van je hond echt naar voren komt) en <strong>sfeerbeelden</strong> waarin je hond in zijn omgeving past. Allemaal bewerkt, in een online galerij, klaar om te delen, af te drukken of in te lijsten.`,
+  },
+  {
+    question: 'Hoe lang duurt zo\'n shoot?',
+    answer: `Gemiddeld 60 tot 90 minuten op locatie. Soms iets korter (als je hond het top doet en we de beelden snel hebben), soms langer (als hij eerst even moet ontdekken wie ik ben). Geen klokwatcher — we doen het goed.`,
+  },
+  {
+    question: 'Mag mijn hond los lopen?',
+    answer: `Op de meeste locaties wel, mits hij of zij betrouwbaar is. Anders werken we met een lange lijn die we naderhand wegretoucheren. Veiligheid en plezier voor de hond gaan altijd voor.`,
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/honden/"
+  pageType="Service"
+  breadcrumbs={breadcrumbs}
+  extraJsonLd={[serviceLd]}
+>
+  <PageHeader
+    eyebrow="Dienst № 04"
+    title="Hondenfotografie met geduld en zonder forceren"
+    description="Voor de honden van Nijverdal, Twente en Overijssel. Speelse beelden en portretten waarop je je trouwe vriend echt herkent. Tegen een vriendelijk tarief."
+    breadcrumbs={breadcrumbs}
+  />
+
+  <section class="dogs-intro">
+    <div class="container dogs-grid">
+      <div class="dogs-text">
+        <p class="lead">
+          Honden zijn geen huisdieren. Ze zijn <em>familie.</em> En familie verdient
+          foto's die geen smartphone-momentje zijn.
+        </p>
+        <p>
+          Met mijn geduldige aanpak zorg ik dat jouw hond zich op z'n gemak voelt —
+          en dat is waar de mooiste foto's vandaan komen. Of je nu een pup hebt
+          die nog overal achteraan rent, of een rustige senior die het liefst even
+          tegen je aan ligt: ik leg vast wie hij of zij is.
+        </p>
+      </div>
+      <ul class="dogs-promise">
+        <li>
+          <span class="dot">🐾</span>
+          <div>
+            <h4>Spontaan & speels</h4>
+            <p>Spelend, snuffelend, rennend — natuurlijke beelden vol energie.</p>
+          </div>
+        </li>
+        <li>
+          <span class="dot">🐾</span>
+          <div>
+            <h4>Portretten met karakter</h4>
+            <p>Eén foto die zegt wie je hond is, zelfs voor wie hem nooit heeft ontmoet.</p>
+          </div>
+        </li>
+        <li>
+          <span class="dot">🐾</span>
+          <div>
+            <h4>Voor altijd</h4>
+            <p>Beelden waar je over tien jaar nog warmer van wordt dan vandaag.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="affordable-section">
+    <div class="container">
+      <div class="affordable-inner">
+        <span class="eyebrow">Een woord over de prijs</span>
+        <h2>Bewust laagdrempelig</h2>
+        <p>
+          Ik weet dat budget meespeelt — zeker voor iets dat veel mensen "leuk maar niet
+          noodzakelijk" vinden. Daarom hanteer ik voor hondenfotografie <strong>een lager
+          tarief</strong> dan voor mijn zakelijke werk. Mooie professionele foto's van je
+          hond horen voor iedereen mogelijk te zijn, niet alleen voor wie er ruim in zit.
+        </p>
+        <a href="/contact/" class="btn btn-primary">
+          Stuur me een berichtje <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqItems} />
+
+  <CtaBlock
+    eyebrow="Klaar voor mooie foto's van je hond?"
+    title="Plan een shoot"
+    description="Vertel me kort over jouw hond — naam, leeftijd, karakter, plekje waar hij of zij graag is. Dan plannen we wat."
+  />
+</BaseLayout>
+
+<style>
+  .dogs-intro { padding-block: clamp(3rem, 6vw, 5rem); }
+  .dogs-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+  @media (max-width: 800px) { .dogs-grid { grid-template-columns: 1fr; } }
+
+  .dogs-text .lead {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 1.5vw + 1rem, 1.8rem);
+    line-height: 1.4;
+    font-weight: 350;
+    margin-bottom: 1.5rem;
+    max-width: 30ch;
+    letter-spacing: -0.015em;
+  }
+  .dogs-text em { color: var(--color-accent); }
+  .dogs-text p { color: var(--color-ink-soft); margin-bottom: 1.25rem; max-width: 55ch; }
+
+  .dogs-promise {
+    list-style: none; padding: 0;
+    display: flex; flex-direction: column; gap: 1.25rem;
+  }
+  .dogs-promise li {
+    display: flex; gap: 1rem;
+    padding: 1.25rem;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius);
+  }
+  .dogs-promise .dot {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+  .dogs-promise h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+  }
+  .dogs-promise p {
+    font-size: 0.85rem;
+    color: var(--color-ink-soft);
+    margin: 0;
+  }
+
+  .affordable-section {
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+    background: var(--color-bg-alt);
+  }
+  .affordable-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .affordable-inner .eyebrow { justify-content: center; }
+  .affordable-inner .eyebrow::after {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: var(--color-accent);
+  }
+  .affordable-inner h2 { margin-top: 1rem; margin-bottom: 1.5rem; }
+  .affordable-inner p { color: var(--color-ink-soft); margin: 0 auto 2rem; }
+  .affordable-inner .btn { margin: 0 auto; }
+</style>

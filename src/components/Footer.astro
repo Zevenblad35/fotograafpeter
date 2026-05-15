@@ -1,0 +1,377 @@
+---
+import { SITE, MAIN_MENU, LANDING_PAGES, LEGAL_PAGES } from '../config';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <!-- Hoofdsectie footer -->
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-mark">FP</span>
+          <span class="brand-name">Fotograaf Peter</span>
+        </div>
+        <p class="footer-intro">
+          Sociale fotografie, bedrijfsfotografie, personal branding en reclamefotografie
+          in <strong>Nijverdal</strong>, Twente en heel Overijssel.
+          <em>Beleef jouw moment.</em>
+        </p>
+        <div class="footer-contact">
+          <a href={`tel:${SITE.contact.phone}`}>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 3h3l1.5 4-2 1.5a8 8 0 003.5 3.5l1.5-2 4 1.5v3a1 1 0 01-1 1A12 12 0 013 4a1 1 0 011-1z" stroke-linejoin="round"/>
+            </svg>
+            {SITE.contact.phoneDisplay}
+          </a>
+          <a href={`mailto:${SITE.contact.email}`}>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="3" width="12" height="10" rx="1"/>
+              <path d="M2 4l6 5 6-5" stroke-linejoin="round"/>
+            </svg>
+            {SITE.contact.email}
+          </a>
+          <address>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M8 14s5-4.5 5-8a5 5 0 00-10 0c0 3.5 5 8 5 8z" stroke-linejoin="round"/>
+              <circle cx="8" cy="6" r="2"/>
+            </svg>
+            <span>
+              {SITE.contact.address.street}<br />
+              {SITE.contact.address.postalCode} {SITE.contact.address.city}
+            </span>
+          </address>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Diensten</h4>
+        <ul>
+          {MAIN_MENU.filter(m => !['Home', 'Contact', 'Over Peter'].includes(m.label)).map(item => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Navigatie</h4>
+        <ul>
+          {MAIN_MENU.map(item => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Openingstijden</h4>
+        <ul class="hours-list">
+          {SITE.openingHours.map(d => (
+            <li class:list={[{ closed: !d.isOpen }]}>
+              <span>{d.day}</span>
+              <span>{d.hours}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <!-- Uitklap: alle landingspagina's -->
+    <div class="all-pages">
+      <button class="all-pages-toggle" aria-expanded="false" aria-controls="all-pages-list">
+        <span>Alle pagina's bekijken</span>
+        <span class="count">({LANDING_PAGES.length} landingspagina's)</span>
+        <svg class="chevron" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 5l4 4 4-4"/>
+        </svg>
+      </button>
+
+      <div class="all-pages-panel" id="all-pages-list" hidden>
+        <p class="all-pages-intro">
+          Specifieke landingspagina's per dienst en regio — gericht op vindbaarheid in zoekmachines.
+          Geen onderdeel van het hoofdmenu, wel volledig geïndexeerd.
+        </p>
+        <ul class="landing-grid">
+          {LANDING_PAGES.map(page => (
+            <li>
+              <a href={page.href} class="landing-link">
+                <span class="landing-label">{page.label}</span>
+                <span class="landing-desc">{page.description}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <!-- Onderbalk -->
+    <div class="footer-bottom">
+      <div class="legal-info">
+        <span>© {year} {SITE.business.legalName}</span>
+        <span class="sep">·</span>
+        <span>KvK {SITE.business.kvk}</span>
+        <span class="sep">·</span>
+        <span>BTW {SITE.business.btw}</span>
+      </div>
+      <ul class="legal-links">
+        {LEGAL_PAGES.map(item => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-ink);
+    color: var(--color-bg);
+    padding-block: clamp(3rem, 6vw, 5rem) 2rem;
+    margin-top: clamp(4rem, 10vw, 8rem);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 540px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  .footer-brand .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    border-radius: 50%;
+    font-size: 1.15rem;
+  }
+
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+
+  .footer-intro {
+    color: rgba(245, 241, 234, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    max-width: 36ch;
+    margin-bottom: 1.5rem;
+  }
+  .footer-intro strong { color: var(--color-bg); font-weight: 500; }
+
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+  }
+  .footer-contact a, .footer-contact address {
+    color: rgba(245, 241, 234, 0.7);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-style: normal;
+    transition: color var(--t);
+  }
+  .footer-contact a:hover { color: var(--color-bg); }
+  .footer-contact svg { flex-shrink: 0; margin-top: 3px; opacity: 0.7; }
+
+  .footer-heading {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 500;
+    color: var(--color-highlight);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .footer-col a {
+    color: rgba(245, 241, 234, 0.7);
+    font-size: 0.92rem;
+    transition: color var(--t), padding var(--t);
+  }
+  .footer-col a:hover {
+    color: var(--color-bg);
+    padding-left: 4px;
+  }
+
+  .hours-list {
+    list-style: none;
+    padding: 0;
+  }
+  .hours-list li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: rgba(245, 241, 234, 0.7);
+    padding: 0.35rem 0;
+    border-bottom: 1px dashed rgba(245, 241, 234, 0.1);
+  }
+  .hours-list li.closed { opacity: 0.5; }
+
+  .footer-divider {
+    height: 1px;
+    background: rgba(245, 241, 234, 0.12);
+    margin-block: 2.5rem;
+  }
+
+  /* Alle pagina's expandable */
+  .all-pages-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: rgba(245, 241, 234, 0.04);
+    border: 1px solid rgba(245, 241, 234, 0.12);
+    border-radius: 999px;
+    color: var(--color-bg);
+    font-size: 0.95rem;
+    transition: all var(--t);
+  }
+  .all-pages-toggle:hover {
+    background: rgba(245, 241, 234, 0.08);
+    border-color: rgba(245, 241, 234, 0.25);
+  }
+  .all-pages-toggle .count {
+    color: var(--color-highlight);
+    font-size: 0.85rem;
+  }
+  .all-pages-toggle .chevron {
+    transition: transform var(--t);
+    margin-left: 0.25rem;
+  }
+  .all-pages-toggle[aria-expanded="true"] .chevron {
+    transform: rotate(180deg);
+  }
+
+  .all-pages-panel {
+    margin-top: 1.5rem;
+    animation: fadeIn 0.4s ease-out;
+  }
+
+  .all-pages-intro {
+    color: rgba(245, 241, 234, 0.55);
+    font-size: 0.88rem;
+    max-width: 60ch;
+    margin-bottom: 1.5rem;
+  }
+
+  .landing-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .landing-link {
+    display: flex;
+    flex-direction: column;
+    padding: 0.9rem 1.1rem;
+    background: rgba(245, 241, 234, 0.03);
+    border: 1px solid rgba(245, 241, 234, 0.08);
+    border-radius: 8px;
+    color: rgba(245, 241, 234, 0.85);
+    transition: all var(--t);
+    height: 100%;
+  }
+  .landing-link:hover {
+    background: rgba(245, 241, 234, 0.07);
+    border-color: var(--color-highlight);
+    transform: translateY(-2px);
+  }
+  .landing-label {
+    font-size: 0.95rem;
+    color: var(--color-bg);
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+  }
+  .landing-desc {
+    font-size: 0.8rem;
+    color: rgba(245, 241, 234, 0.55);
+    line-height: 1.45;
+  }
+
+  /* Onderbalk */
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.82rem;
+  }
+
+  .legal-info {
+    color: rgba(245, 241, 234, 0.5);
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .legal-info .sep { opacity: 0.4; }
+
+  .legal-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .legal-links a {
+    color: rgba(245, 241, 234, 0.6);
+    transition: color var(--t);
+  }
+  .legal-links a:hover { color: var(--color-bg); }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('.all-pages-toggle');
+  const panel = document.getElementById('all-pages-list');
+
+  if (toggle && panel) {
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      if (isOpen) panel.setAttribute('hidden', '');
+      else panel.removeAttribute('hidden');
+    });
+  }
+</script>
