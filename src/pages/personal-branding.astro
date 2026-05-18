@@ -108,20 +108,40 @@ const faqItems = [
       <h2>Wie ik vooral fotografeer</h2>
       <div class="forwhom-grid">
         <article>
-          <h3>ZZP'ers & freelancers</h3>
-          <p>Coaches, consultants, designers, ontwikkelaars, therapeuten — iedereen die als zichzelf onderneemt.</p>
+          <div class="forwhom-media">
+            <img src="/images/services/branding-zzp.jpg" alt="ZZP'ers en freelancers" loading="lazy" />
+          </div>
+          <div class="forwhom-body">
+            <h3>ZZP'ers & freelancers</h3>
+            <p>Coaches, consultants, designers, ontwikkelaars, therapeuten — iedereen die als zichzelf onderneemt.</p>
+          </div>
         </article>
         <article>
-          <h3>Sprekers & experts</h3>
-          <p>Mensen die op een podium staan, in podcasts spreken, of als thought leader gevonden willen worden.</p>
+          <div class="forwhom-media">
+            <img src="/images/services/branding-spreker.jpg" alt="Sprekers en experts" loading="lazy" />
+          </div>
+          <div class="forwhom-body">
+            <h3>Sprekers & experts</h3>
+            <p>Mensen die op een podium staan, in podcasts spreken, of als thought leader gevonden willen worden.</p>
+          </div>
         </article>
         <article>
-          <h3>Ondernemers met een gezicht</h3>
-          <p>Eigenaren van kleine bedrijven waar de oprichter zelf het uithangbord is — voor klanten én voor talent.</p>
+          <div class="forwhom-media">
+            <img src="/images/services/branding-ondernemer.jpg" alt="Ondernemers met een gezicht" loading="lazy" />
+          </div>
+          <div class="forwhom-body">
+            <h3>Ondernemers met een gezicht</h3>
+            <p>Eigenaren van kleine bedrijven waar de oprichter zelf het uithangbord is — voor klanten én voor talent.</p>
+          </div>
         </article>
         <article>
-          <h3>Auteurs & makers</h3>
-          <p>Schrijvers, kunstenaars en creatieven die portretten nodig hebben bij hun werk, op covers en in pers.</p>
+          <div class="forwhom-media">
+            <img src="/images/services/branding-maker.jpg" alt="Auteurs en makers" loading="lazy" />
+          </div>
+          <div class="forwhom-body">
+            <h3>Auteurs & makers</h3>
+            <p>Schrijvers, kunstenaars en creatieven die portretten nodig hebben bij hun werk, op covers en in pers.</p>
+          </div>
         </article>
       </div>
     </div>
@@ -195,11 +215,38 @@ const faqItems = [
   .forwhom-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
   .forwhom-grid article {
-    padding: 1.5rem 0;
-    border-top: 1px solid var(--color-line);
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-line);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all var(--t);
+  }
+  .forwhom-grid article:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -18px rgba(26, 24, 20, 0.18);
+  }
+  .forwhom-media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--color-bg-alt);
+  }
+  .forwhom-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .forwhom-grid article:hover .forwhom-media img {
+    transform: scale(1.04);
+  }
+  .forwhom-body {
+    padding: 1.5rem 1.5rem 1.75rem;
   }
   .forwhom-grid h3 {
     font-size: 1.25rem;

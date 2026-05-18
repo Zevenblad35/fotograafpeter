@@ -29,12 +29,12 @@ const serviceLd = {
 };
 
 const includes = [
-  { title: 'Zakelijke portretten', desc: 'Voor team, website en LinkedIn — herkenbaar en consistent.' },
-  { title: 'Sfeer & locatie', desc: 'Hoe ziet jouw werkplek eruit? Welke energie hangt er?' },
-  { title: 'Aan-het-werk beelden', desc: 'Mensen in beweging, gefocust, in hun element.' },
-  { title: 'Team & cultuur', desc: 'Groepsfoto\'s die niet gewrongen aanvoelen.' },
-  { title: 'Producten in context', desc: 'Wat maak je, en hoe komt het tot stand?' },
-  { title: 'Events & opening', desc: 'Bedrijfsmomenten zoals jubilea, openingen, lanceringen.' },
+  { title: 'Zakelijke portretten', desc: 'Voor team, website en LinkedIn — herkenbaar en consistent.', image: '/images/services/bedrijf-portret.jpg', alt: 'Zakelijk portret' },
+  { title: 'Sfeer & locatie', desc: 'Hoe ziet jouw werkplek eruit? Welke energie hangt er?', image: '/images/services/bedrijf-sfeer.jpg', alt: 'Werkplek sfeer' },
+  { title: 'Aan-het-werk beelden', desc: 'Mensen in beweging, gefocust, in hun element.', image: '/images/services/bedrijf-werk.jpg', alt: 'Aan het werk' },
+  { title: 'Team & cultuur', desc: 'Groepsfoto\'s die niet gewrongen aanvoelen.', image: '/images/services/bedrijf-team.jpg', alt: 'Team' },
+  { title: 'Producten in context', desc: 'Wat maak je, en hoe komt het tot stand?', image: '/images/services/bedrijf-product.jpg', alt: 'Producten' },
+  { title: 'Events & opening', desc: 'Bedrijfsmomenten zoals jubilea, openingen, lanceringen.', image: '/images/services/bedrijf-event.jpg', alt: 'Event' },
 ];
 
 const faqItems = [
@@ -124,9 +124,14 @@ const faqItems = [
       <ul class="includes-grid">
         {includes.map((item, i) => (
           <li class="include-item">
-            <span class="include-num">0{i + 1}</span>
-            <h3>{item.title}</h3>
-            <p>{item.desc}</p>
+            <div class="include-media">
+              <img src={item.image} alt={item.alt} loading="lazy" />
+            </div>
+            <div class="include-body">
+              <span class="include-num">0{i + 1}</span>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+            </div>
           </li>
         ))}
       </ul>
@@ -245,18 +250,38 @@ const faqItems = [
     padding: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1rem;
+    gap: 1.25rem;
   }
   .include-item {
-    padding: 1.75rem;
     background: var(--color-surface);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     border: 1px solid var(--color-line);
     transition: all var(--t);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
   .include-item:hover {
     transform: translateY(-2px);
     border-color: var(--color-accent);
+    box-shadow: 0 14px 30px -18px rgba(26, 24, 20, 0.18);
+  }
+  .include-media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--color-bg-alt);
+  }
+  .include-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .include-item:hover .include-media img {
+    transform: scale(1.04);
+  }
+  .include-body {
+    padding: 1.5rem 1.5rem 1.75rem;
   }
   .include-num {
     font-family: var(--font-display);

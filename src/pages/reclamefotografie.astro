@@ -29,21 +29,29 @@ const specialties = [
     title: 'Productfotografie',
     description: 'Voor e-commerce, catalogus en webshop. Pakshots met cleane achtergrond én sfeerbeelden waar je product ademt.',
     use: 'Webshop · Bol · Amazon · Catalogi',
+    image: '/images/services/reclame-product.jpg',
+    alt: 'Productfotografie',
   },
   {
     title: 'Food fotografie',
     description: 'Voor restaurants, caterers en foodmerken. Gerechten die je vrijdagmiddag nog wilt bestellen vanaf je telefoon.',
     use: 'Menukaart · Social · Verpakking',
+    image: '/images/services/reclame-food.jpg',
+    alt: 'Food fotografie',
   },
   {
     title: 'Interieur & vastgoed',
     description: 'Voor architecten, makelaars, hotels en horeca. Ruimtes die overtuigen — licht, lijnen, sfeer kloppen.',
     use: 'Funda · Booking · Architectenwebsite',
+    image: '/images/services/reclame-interieur.jpg',
+    alt: 'Interieurfotografie',
   },
   {
     title: 'Campagnebeeld',
     description: 'Voor merken die een visuele wending willen — concept, locatie, modellen, styling. Eén verhaal in één beeld.',
     use: 'Advertenties · Drukwerk · OOH',
+    image: '/images/services/reclame-campagne.jpg',
+    alt: 'Campagnebeeld',
   },
 ];
 
@@ -124,10 +132,15 @@ const faqItems = [
       <div class="specialties-grid">
         {specialties.map((s, i) => (
           <article class="specialty-card">
-            <span class="specialty-num">№ 0{i + 1}</span>
-            <h3>{s.title}</h3>
-            <p>{s.description}</p>
-            <span class="specialty-use">{s.use}</span>
+            <div class="specialty-media">
+              <img src={s.image} alt={s.alt} loading="lazy" />
+            </div>
+            <div class="specialty-body">
+              <span class="specialty-num">№ 0{i + 1}</span>
+              <h3>{s.title}</h3>
+              <p>{s.description}</p>
+              <span class="specialty-use">{s.use}</span>
+            </div>
           </article>
         ))}
       </div>
@@ -182,18 +195,39 @@ const faqItems = [
   @media (max-width: 700px) { .specialties-grid { grid-template-columns: 1fr; } }
 
   .specialty-card {
-    padding: 2rem 1.75rem;
     background: var(--color-surface);
     border: 1px solid var(--color-line);
     border-radius: var(--radius-lg);
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
     transition: all var(--t);
+    overflow: hidden;
   }
   .specialty-card:hover {
     border-color: var(--color-accent);
     transform: translateY(-2px);
+    box-shadow: 0 14px 30px -18px rgba(26, 24, 20, 0.18);
+  }
+  .specialty-media {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--color-bg-alt);
+  }
+  .specialty-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .specialty-card:hover .specialty-media img {
+    transform: scale(1.04);
+  }
+  .specialty-body {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex-grow: 1;
   }
   .specialty-num {
     font-family: var(--font-display);

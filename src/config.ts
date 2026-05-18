@@ -69,13 +69,17 @@ export const MAIN_MENU = [
   { label: 'Bedrijfsfotografie', href: '/bedrijfsfotografie/' },
   { label: 'Personal Branding', href: '/personal-branding/' },
   { label: 'Reclamefotografie', href: '/reclamefotografie/' },
-  { label: 'Honden', href: '/honden/' },
   { label: 'Contact', href: '/contact/' },
 ];
 
 // LANDINGSPAGINA'S — verborgen voor menu, zichtbaar in footer
 // onder "Alle pagina's bekijken". Hier voeg je ze toe voor lokale SEO.
 export const LANDING_PAGES = [
+  {
+    label: 'Hondenfotografie',
+    href: '/honden/',
+    description: 'Liefdevolle hondenfotografie tegen een vriendelijk tarief.',
+  },
   {
     label: 'Fotograaf Nijverdal',
     href: '/landingspaginas/fotograaf-nijverdal/',
