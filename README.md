@@ -185,6 +185,37 @@ Plaats je foto's in `public/images/` en verwijs ernaar als `/images/foto.jpg`.
 Voor optimalisatie kun je Astro's [Image component](https://docs.astro.build/en/guides/images/)
 gebruiken — dan moet `src/assets/` gebruiken in plaats van `public/`.
 
+### Header foto's vervangen (placeholders → eigen werk)
+Elke pagina heeft een full-bleed header foto. Op dit moment staan daar
+**placeholder afbeeldingen** in (herkenbaar aan het "PLACEHOLDER · VERVANG"
+label linksboven). Vervang ze door je eigen werk:
+
+1. Maak je eigen foto's klaar — **landschap/horizontaal**, idealiter
+   **2560×1280 pixels** of breder. JPG, max ~250 KB per stuk (gebruik bijv.
+   [squoosh.app](https://squoosh.app) om te comprimeren).
+2. Plaats ze in `public/images/headers/` met **exact dezelfde bestandsnaam**:
+
+   | Bestand | Voor welke pagina | Suggestie |
+   |---|---|---|
+   | `home.jpg` | Homepagina | Sterk sfeerbeeld dat je stijl samenvat |
+   | `over-peter.jpg` | Over Peter | Portret van jezelf, werkend of in element |
+   | `bedrijfsfotografie.jpg` | Bedrijfsfotografie | Aan-het-werk-beeld bij een klant |
+   | `personal-branding.jpg` | Personal Branding | Ondernemersportret, ingetogen |
+   | `reclamefotografie.jpg` | Reclamefotografie | Mooi product- of campagnebeeld |
+   | `honden.jpg` | Hondenfotografie | Hond in z'n element, buiten |
+   | `contact.jpg` | Contact | Iets met sfeer van Nijverdal/locatie |
+   | `landing.jpg` | Alle 12 landingspagina's | Twents landschap of werk-in-actie |
+
+3. Run `npm run build` of refresh `npm run dev` — klaar.
+
+> **Tip:** de overlay is donker en links zwaarder dan rechts (tekst staat
+> links). Onderwerpen rechts of in het midden blijven zichtbaar; onderwerpen
+> uiterst links verdwijnen onder de tekst. Houd daar rekening mee.
+
+### Header foto helemaal weglaten op een pagina
+Verwijder gewoon de `image` en `imageAlt` props in de betreffende pagina.
+De header valt dan terug op de subtiele gradient-achtergrond.
+
 ---
 
 ## Projectstructuur
