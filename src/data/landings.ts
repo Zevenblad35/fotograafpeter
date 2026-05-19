@@ -10,7 +10,7 @@ export interface LandingData {
   description: string;
   h1: string;
   intro: string;
-  primaryService: 'bedrijfsfotografie' | 'personal-branding' | 'reclamefotografie' | 'honden' | 'algemeen';
+  primaryService: 'bedrijfsfotografie' | 'personal-branding' | 'reclamefotografie' | 'evenementen' | 'algemeen';
 }
 
 export const landingsData: LandingData[] = [
@@ -19,10 +19,10 @@ export const landingsData: LandingData[] = [
     city: 'Nijverdal',
     region: 'Overijssel',
     service: 'Fotograaf',
-    title: 'Fotograaf Nijverdal | Bedrijf, Personal Branding & Honden',
-    description: 'Op zoek naar een fotograaf in Nijverdal? Fotograaf Peter verzorgt bedrijfsfotografie, personal branding, reclame- en hondenfotografie. Lokaal, persoonlijk, professioneel.',
+    title: 'Fotograaf Nijverdal | Bedrijf, Personal Branding & Evenementen',
+    description: 'Op zoek naar een fotograaf in Nijverdal? Fotograaf Peter verzorgt bedrijfsfotografie, personal branding, reclamefotografie en evenementenfotografie voor ondernemers en organisaties.',
     h1: 'Fotograaf Nijverdal',
-    intro: 'Op zoek naar een professionele fotograaf in Nijverdal? Mijn studio en uitvalsbasis zit aan de Zevenblad 35 in Nijverdal. Vanuit hier werk ik voor bedrijven én particulieren in Nijverdal, de gemeente Hellendoorn en heel Twente.',
+    intro: 'Op zoek naar een professionele fotograaf in Nijverdal voor je bedrijf of organisatie? Mijn uitvalsbasis zit aan de Zevenblad 35 in Nijverdal. Vanuit hier werk ik voor ondernemers, mkb-bedrijven, verenigingen en organisaties in Nijverdal en heel Twente.',
     primaryService: 'algemeen',
   },
   {
@@ -31,7 +31,7 @@ export const landingsData: LandingData[] = [
     region: 'Overijssel',
     service: 'Bedrijfsfotograaf',
     title: 'Bedrijfsfotograaf Nijverdal | Zakelijke Fotografie',
-    description: "Bedrijfsfotograaf in Nijverdal voor zakelijke portretten, teamfoto's, sfeerbeelden en bedrijfsreportages. Authentiek, professioneel, op locatie in Nijverdal en omgeving.",
+    description: "Bedrijfsfotograaf in Nijverdal voor zakelijke portretten, teamfoto's, sfeerbeelden en bedrijfsreportages. Echt, professioneel, op locatie in Nijverdal en omgeving.",
     h1: 'Bedrijfsfotograaf in Nijverdal',
     intro: 'Bedrijven in Nijverdal die professionele beelden willen voor website, social media en jaarverslag, kiezen voor een vaste bedrijfsfotograaf in de regio. Ik werk op jouw locatie, met jouw team — niet vanuit een afgesloten studio.',
     primaryService: 'bedrijfsfotografie',
@@ -42,7 +42,7 @@ export const landingsData: LandingData[] = [
     region: 'Overijssel',
     service: 'Personal Branding Fotograaf',
     title: 'Personal Branding Fotograaf Nijverdal | Voor Ondernemers',
-    description: "Personal branding fotograaf in Nijverdal voor ondernemers, zzp'ers en experts. Authentieke portretten voor website, LinkedIn en social media. Zonder gladde stockfoto-look.",
+    description: "Personal branding fotograaf in Nijverdal voor ondernemers, zzp'ers en experts. Echte portretten voor website, LinkedIn en social media. Zonder gladde stockfoto-look.",
     h1: 'Personal Branding Fotograaf in Nijverdal',
     intro: "Ondernemers en zzp'ers in Nijverdal die een sterke online aanwezigheid willen, hebben sterke persoonlijke beelden nodig. Geen LinkedIn-headshots die op elkaar lijken — wel foto's die laten zien wie jij bent en waar jij voor staat.",
     primaryService: 'personal-branding',
@@ -63,10 +63,10 @@ export const landingsData: LandingData[] = [
     city: 'Hellendoorn',
     region: 'Overijssel',
     service: 'Fotograaf',
-    title: 'Fotograaf Hellendoorn | Bedrijf, Personal Branding & Honden',
-    description: 'Fotograaf in Hellendoorn voor bedrijfsfotografie, personal branding en hondenshoots. Lokaal actief in de hele gemeente Hellendoorn — Nijverdal, Daarle, Daarlerveen.',
+    title: 'Fotograaf Hellendoorn | Bedrijf, Personal Branding & Evenementen',
+    description: 'Fotograaf in Hellendoorn voor bedrijfsfotografie, personal branding en evenementenfotografie. Lokaal actief in de hele gemeente Hellendoorn — Nijverdal, Daarle, Daarlerveen.',
     h1: 'Fotograaf Hellendoorn',
-    intro: 'De gemeente Hellendoorn omvat naast Hellendoorn ook Nijverdal, Daarle, Daarlerveen en Haarle. Vanuit mijn basis in Nijverdal ben ik snel in elk van die kernen. Of het nu om een bedrijf gaat, een ondernemer, een gezin of een hond — ik ben dichtbij.',
+    intro: 'De gemeente Hellendoorn omvat naast Hellendoorn ook Nijverdal, Daarle, Daarlerveen en Haarle. Vanuit mijn basis in Nijverdal ben ik snel in elk van die kernen — voor bedrijven, ondernemers, evenementen en verenigingen die hun verhaal in beeld willen brengen.',
     primaryService: 'algemeen',
   },
   {
@@ -75,9 +75,9 @@ export const landingsData: LandingData[] = [
     region: 'Overijssel',
     service: 'Fotograaf',
     title: 'Fotograaf Wierden | Bedrijf & Personal Branding',
-    description: 'Fotograaf voor bedrijven en particulieren in Wierden. Bedrijfsfotografie, personal branding en reclamefotografie — vanuit Nijverdal, snel op locatie in Wierden en Enter.',
+    description: 'Fotograaf voor bedrijven en organisaties in Wierden. Bedrijfsfotografie, personal branding en reclamefotografie — vanuit Nijverdal, snel op locatie in Wierden en Enter.',
     h1: 'Fotograaf Wierden',
-    intro: 'Wierden ligt op een steenworp afstand van mijn basis in Nijverdal. Ik werk regelmatig in Wierden, Enter en omgeving — voor bedrijven die hun mensen, hun werk of hun product professioneel in beeld willen brengen.',
+    intro: 'Wierden ligt op een steenworp afstand van mijn basis in Nijverdal. Ik werk regelmatig in Wierden, Enter en omgeving voor bedrijven die hun mensen, hun werk of hun product professioneel in beeld willen brengen.',
     primaryService: 'algemeen',
   },
   {
@@ -85,8 +85,8 @@ export const landingsData: LandingData[] = [
     city: 'Rijssen',
     region: 'Overijssel',
     service: 'Fotograaf',
-    title: 'Fotograaf Rijssen | Zakelijk & Particulier',
-    description: 'Professionele fotograaf actief in Rijssen en de gemeente Rijssen-Holten. Bedrijfsfotografie, personal branding, reclame- en hondenfotografie.',
+    title: 'Fotograaf Rijssen | Zakelijke & Organisatie Fotografie',
+    description: 'Professionele fotograaf actief in Rijssen en de gemeente Rijssen-Holten. Bedrijfsfotografie, personal branding, reclamefotografie en evenementenfotografie.',
     h1: 'Fotograaf Rijssen',
     intro: 'Rijssen en Holten kennen veel ondernemers en mkb-bedrijven die hun online aanwezigheid serieus nemen. Vanuit Nijverdal kom ik graag naar Rijssen voor een bedrijfsshoot, personal branding sessie of campagnebeeld.',
     primaryService: 'algemeen',
@@ -110,7 +110,7 @@ export const landingsData: LandingData[] = [
     title: 'Fotograaf Twente | Bedrijfsfotografie & Personal Branding',
     description: 'Fotograaf actief in heel Twente: Nijverdal, Almelo, Hengelo, Enschede, Rijssen, Wierden, Oldenzaal en omgeving. Bedrijfsfotografie, personal branding en reclamefotografie.',
     h1: 'Fotograaf Twente',
-    intro: 'Twente is mijn natuurlijke werkgebied. Vanuit Nijverdal kom ik naar Almelo, Hengelo, Enschede, Oldenzaal, Rijssen, Wierden en alle plaatsen ertussenin. Bedrijven, ondernemers en particulieren in heel Twente kunnen rekenen op consistente, lokale fotografie.',
+    intro: 'Twente is mijn natuurlijke werkgebied. Vanuit Nijverdal kom ik naar Almelo, Hengelo, Enschede, Oldenzaal, Rijssen, Wierden en alle plaatsen ertussenin. Bedrijven, organisaties en ondernemers in heel Twente kunnen rekenen op consistente, lokale fotografie.',
     primaryService: 'algemeen',
   },
   {
@@ -119,7 +119,7 @@ export const landingsData: LandingData[] = [
     region: 'Overijssel',
     service: 'Fotograaf',
     title: 'Fotograaf Overijssel | Voor de hele Provincie',
-    description: 'Fotograaf actief in heel Overijssel: Twente, Salland, Vechtdal, Kop van Overijssel. Bedrijfsfotografie, personal branding, reclamefotografie en honden.',
+    description: 'Fotograaf actief in heel Overijssel: Twente, Salland, Vechtdal, Kop van Overijssel. Bedrijfsfotografie, personal branding, reclamefotografie en evenementen.',
     h1: 'Fotograaf Overijssel',
     intro: 'Overijssel is groter dan Twente alleen — Salland, Vechtdal en Kop van Overijssel horen er ook bij. Vanuit Nijverdal werk ik in heel Overijssel voor opdrachten waar het lokale verhaal telt.',
     primaryService: 'algemeen',
@@ -136,14 +136,14 @@ export const landingsData: LandingData[] = [
     primaryService: 'bedrijfsfotografie',
   },
   {
-    slug: 'hondenfotograaf-twente',
+    slug: 'evenementenfotograaf-twente',
     city: '',
     region: 'Twente',
-    service: 'Hondenfotograaf',
-    title: 'Hondenfotograaf Twente | Liefdevolle Hondenfotografie',
-    description: "Hondenfotograaf in Twente: speelse foto's en portretten van jouw hond. Op de Sallandse Heuvelrug, in jullie tuin of op een plek die jullie hond fijn vindt.",
-    h1: 'Hondenfotograaf Twente',
-    intro: 'Twente heeft prachtige plekken om honden te fotograferen — van de Sallandse Heuvelrug tot de bossen rond Hellendoorn en Markelo. Met geduld, snoepjes en zonder druk maken we beelden waarin jouw hond zichzelf is.',
-    primaryService: 'honden',
+    service: 'Evenementenfotograaf',
+    title: 'Evenementenfotograaf Twente | Zakelijke Evenementen & Bijeenkomsten',
+    description: 'Evenementenfotograaf in Twente voor bedrijfsevenementen, openingen, jubilea, sportevenementen en zakelijke bijeenkomsten. Snel en betrouwbaar, met oog voor sfeer en details.',
+    h1: 'Evenementenfotograaf Twente',
+    intro: 'Bedrijfsevenementen, openingen, jubilea, sportevenementen en zakelijke bijeenkomsten in Twente — momenten die je goed wilt vastleggen. Voor publicatie achteraf, voor sociale media, voor jaarverslagen, of gewoon voor herinnering aan een mooi moment.',
+    primaryService: 'evenementen',
   },
 ];

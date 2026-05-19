@@ -5,7 +5,7 @@ import CtaBlock from '../components/CtaBlock.astro';
 import { SITE } from '../config';
 
 const title = 'Over Fotograaf Peter | Peter Rutgers uit Nijverdal';
-const description = 'Maak kennis met Peter Rutgers. Fotograaf in Nijverdal, gespecialiseerd in bedrijfsfotografie, personal branding, reclamefotografie en hondenfotografie in Twente en Overijssel.';
+const description = 'Maak kennis met Peter Rutgers. Fotograaf in Nijverdal, gespecialiseerd in bedrijfsfotografie, personal branding, reclamefotografie en evenementenfotografie voor ondernemers en organisaties in Twente en Overijssel.';
 
 const breadcrumbs = [
   { name: 'Home', href: '/' },
@@ -20,7 +20,7 @@ const personLd = {
   jobTitle: 'Fotograaf',
   worksFor: { '@id': `${SITE.url}/#business` },
   description:
-    'Peter Rutgers (Fotograaf Peter) is fotograaf in Nijverdal en gespecialiseerd in bedrijfsfotografie, personal branding, reclamefotografie en hondenfotografie in Twente en Overijssel.',
+    'Peter Rutgers (Fotograaf Peter) is fotograaf in Nijverdal, gespecialiseerd in bedrijfsfotografie, personal branding, reclamefotografie en evenementenfotografie voor ondernemers en organisaties in Twente en Overijssel.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Nijverdal',
@@ -32,8 +32,12 @@ const personLd = {
     'Personal branding fotografie',
     'Reclamefotografie',
     'Productfotografie',
-    'Hondenfotografie',
-    'Sociale fotografie',
+    'Food fotografie',
+    'Interieurfotografie',
+    'Vastgoedfotografie',
+    'Evenementenfotografie',
+    'Zakelijke portretten',
+    'Sportfotografie',
   ],
 };
 ---
@@ -48,8 +52,8 @@ const personLd = {
 >
   <PageHeader
     eyebrow="Over Peter"
-    title="De fotograaf achter het moment"
-    description="Van familieshoots in 2016 tot bedrijfsbeelden voor merken vandaag — dit is het verhaal van Peter Rutgers en Fotograaf Peter."
+    title="Het verhaal achter de camera"
+    description="Mijn naam is Peter Rutgers. Ik ben fotograaf uit Nijverdal in Twente en werk onder de naam Fotograaf Peter. Dit is mijn verhaal."
     breadcrumbs={breadcrumbs}
     image="/images/headers/over-peter.jpg"
     imageAlt="Portret van Peter Rutgers"
@@ -63,59 +67,126 @@ const personLd = {
           <dd>Peter Rutgers</dd>
           <dt>Bedrijf</dt>
           <dd>Peter Rutgers Media</dd>
-          <dt>Sinds</dt>
-          <dd>2016 als Fotograaf Peter</dd>
+          <dt>Werkt onder de naam</dt>
+          <dd>Fotograaf Peter</dd>
           <dt>Basis</dt>
           <dd>Nijverdal, Overijssel</dd>
           <dt>Specialisatie</dt>
-          <dd>Bedrijf, Personal branding, Reclamefotografie</dd>
+          <dd>Bedrijf, Personal branding, Reclame, Evenementen</dd>
           <dt>Werkgebied</dt>
           <dd>Twente, Overijssel, Salland</dd>
+          <dt>Ook</dt>
+          <dd>
+            <a href="https://www.peterrutgersmedia.nl" rel="noopener" class="link-inline">Peter Rutgers Media</a> · online &amp; content<br />
+            <a href="https://thebountyhunter.nl" rel="noopener" class="link-inline">The Bounty Hunter</a> · film &amp; storytelling
+          </dd>
         </dl>
       </aside>
 
       <div class="story-prose">
-        <h2>Het begin</h2>
+        <h2>Hoe het begon</h2>
         <p>
-          Het is begonnen binnen de familie. Een verjaardag, een doop, een dagje uit —
-          ik wilde dingen vastleggen die <em>niet poseerden</em>. Dat klikte. Vrienden
-          en kennissen vroegen of ik ook bij hen wilde komen. Toen er ook onbekenden
-          binnenkwamen, was het tijd voor een naam: eerst <strong>Fotograaf Oom Peter</strong>,
-          vanaf najaar 2016 simpelweg <strong>Fotograaf Peter</strong>. Duidelijk.
-          Herkenbaar. Voor iedereen.
+          Mijn naam is <strong>Peter Rutgers</strong>. Ik ben fotograaf uit
+          <strong>Nijverdal</strong> in Twente en werk onder de naam
+          <strong>Fotograaf Peter</strong>.
+        </p>
+        <p>
+          Fotografie begon voor mij niet als bedrijf, maar als interesse. Het
+          vastleggen van <em>echte momenten, echte mensen en echte verhalen.</em>
+          Geen gemaakte poses, maar beelden die laten zien hoe iets echt is. Door
+          de jaren heen groeide dat uit tot wat ik nu doe: fotografie voor
+          ondernemers, evenementen en organisaties die hun verhaal goed willen
+          laten zien.
         </p>
 
-        <h2>Wat me drijft</h2>
+        <h2>Echte fotografie in plaats van gemaakte beelden</h2>
         <p>
-          Een foto is een momentopname. Maar het is de optelsom van die fracties die
-          bepaalt hoe we terugkijken — op een dag, een relatie, een mijlpaal, een
-          emotie. Als fotograaf zoek ik naar dié ene fractie die beeldbepalend is.
-          <em>Hét moment.</em>
+          Ik geloof dat goede fotografie begint bij <strong>echtheid</strong>.
+          Geen standaardposes of geforceerde glimlach, maar beelden die laten
+          zien:
         </p>
+        <ul class="prose-list">
+          <li>hoe iemand werkt</li>
+          <li>waar een bedrijf voor staat</li>
+          <li>wat er achter de schermen gebeurt</li>
+        </ul>
         <p>
-          Baby's, kinderen, jongeren, volwassenen, ouderen — we zijn altijd in beweging.
-          Mijn werk is om die beweging stil te zetten op het moment waarop er iets
-          eerlijks gebeurt.
-        </p>
-
-        <h2>De zakelijke kant</h2>
-        <p>
-          De afgelopen jaren is mijn werk doorgegroeid naar de zakelijke wereld. Voor
-          ondernemers, mkb-bedrijven en merken in Nijverdal, Twente en heel Overijssel
-          maak ik <strong>bedrijfsfotografie</strong>, <strong>personal branding</strong>,
-          en <strong>reclamefotografie</strong> (interieur, product, food).
-        </p>
-        <p>
-          Wat blijft: de manier van werken. Geen geforceerde poses, geen stockgevoel,
-          geen onnodig gladde nabewerking. Ik wil dat klanten op de foto's hun eigen
-          mensen, hun eigen bedrijf, hun eigen producten herkennen — alleen dan op
-          z'n best.
+          Juist dat maakt een foto sterk. Mensen zien meteen dat het echt is. En
+          precies dat zorgt voor vertrouwen bij klanten.
         </p>
 
-        <h2>Werken we samen?</h2>
+        <h2>Fotografie voor ondernemers en organisaties</h2>
         <p>
-          Geen verkoopgesprek, geen pakketten waar je doorheen moet ploegen. Bel of mail,
-          dan praten we erover. Daarna stuur ik je een eerlijke offerte.
+          Vanuit Nijverdal werk ik voor ondernemers en organisaties in Twente
+          en Overijssel. Dat kan zijn:
+        </p>
+        <ul class="prose-list">
+          <li>bedrijfsfotografie</li>
+          <li>evenementen</li>
+          <li>sport en verenigingen</li>
+          <li>portretten van ondernemers</li>
+          <li>content voor websites en social media</li>
+        </ul>
+        <p>
+          Veel ondernemers gebruiken mijn foto's niet alleen voor social media,
+          maar ook voor hun website en marketing.
+        </p>
+
+        <h2>Meer dan alleen fotografie</h2>
+        <p>
+          Naast fotografie help ik ondernemers ook met hun online zichtbaarheid.
+          Via mijn bedrijf
+          <a href="https://www.peterrutgersmedia.nl" rel="noopener" class="link-inline">Peter Rutgers Media</a>
+          werk ik aan:
+        </p>
+        <ul class="prose-list">
+          <li>social media beheer</li>
+          <li>websites</li>
+          <li>online vindbaarheid</li>
+          <li>content strategie</li>
+        </ul>
+        <p>
+          Zo zorgen goede beelden er niet alleen voor dat iets mooi is, maar
+          ook dat het gevonden wordt en vertrouwen opbouwt.
+        </p>
+
+        <h2>Film en storytelling</h2>
+        <p>
+          Soms is een foto niet genoeg om een verhaal te vertellen. Daarom werk
+          ik voor filmprojecten onder de naam
+          <a href="https://thebountyhunter.nl" rel="noopener" class="link-inline">The Bounty Hunter</a>.
+          Daar ligt de focus op film en storytelling — van korte content tot
+          meer cinematografische producties. Zo kan een verhaal verteld worden
+          met fotografie <em>én</em> film.
+        </p>
+
+        <h2>Fotograaf uit Nijverdal</h2>
+        <p>Ik werk vooral in:</p>
+        <ul class="prose-list">
+          <li>Nijverdal</li>
+          <li>Hellendoorn</li>
+          <li>Wierden</li>
+          <li>Twente</li>
+          <li>Overijssel</li>
+        </ul>
+        <p>
+          Omdat ik hier zelf vandaan kom, ken ik de omgeving en de mensen. Dat
+          maakt samenwerken vaak een stuk makkelijker en persoonlijker.
+        </p>
+
+        <h2>Mijn manier van werken</h2>
+        <p>
+          Mijn aanpak is simpel. Geen ingewikkelde marketingpraat, maar gewoon
+          goed werk leveren:
+        </p>
+        <ul class="prose-list">
+          <li>echte foto's</li>
+          <li>echte momenten</li>
+          <li>beelden die passen bij het verhaal van een bedrijf</li>
+        </ul>
+        <p>
+          Want uiteindelijk draait het niet om de foto zelf, maar om
+          <em>wat die foto vertelt.</em>
         </p>
 
         <div class="story-actions">
@@ -124,6 +195,10 @@ const personLd = {
           </a>
           <a href="/bedrijfsfotografie/" class="btn btn-secondary">Bekijk bedrijfsfotografie</a>
         </div>
+
+        <p class="story-signature">
+          — Peter Rutgers, fotograaf en eigenaar van Fotograaf Peter
+        </p>
       </div>
     </div>
   </article>
@@ -175,10 +250,14 @@ const personLd = {
   .story-meta dt:first-child { margin-top: 0; }
   .story-meta dd {
     font-family: var(--font-display);
-    font-size: 1.1rem;
-    line-height: 1.3;
+    font-size: 1.05rem;
+    line-height: 1.35;
     margin: 0.35rem 0 0;
     color: var(--color-ink);
+  }
+  .story-meta dd a {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
   }
 
   .story-prose {
@@ -203,10 +282,42 @@ const personLd = {
     color: var(--color-accent);
   }
 
+  .prose-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .prose-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--color-ink-soft);
+    line-height: 1.6;
+  }
+  .prose-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
   .story-actions {
     display: flex;
     gap: 0.75rem;
     flex-wrap: wrap;
     margin-top: 2.5rem;
+  }
+
+  .story-signature {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-line);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--color-ink-muted);
   }
 </style>

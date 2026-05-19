@@ -5,7 +5,7 @@ export const SITE = {
   name: 'Fotograaf Peter',
   tagline: 'Beleef jouw moment',
   description:
-    'Fotograaf Peter uit Nijverdal — bedrijfsfotografie, personal branding, reclamefotografie en hondenfotografie in Twente en Overijssel. Authentieke beelden, geen stock.',
+    'Fotograaf Peter uit Nijverdal — bedrijfsfotografie, personal branding, reclamefotografie en evenementenfotografie voor ondernemers en organisaties in Twente en Overijssel. Echte beelden, geen stock.',
   url: 'https://www.fotograafpeter.nl',
   locale: 'nl-NL',
   language: 'nl',
@@ -76,14 +76,9 @@ export const MAIN_MENU = [
 // onder "Alle pagina's bekijken". Hier voeg je ze toe voor lokale SEO.
 export const LANDING_PAGES = [
   {
-    label: 'Hondenfotografie',
-    href: '/honden/',
-    description: 'Liefdevolle hondenfotografie tegen een vriendelijk tarief.',
-  },
-  {
     label: 'Fotograaf Nijverdal',
     href: '/landingspaginas/fotograaf-nijverdal/',
-    description: 'Professionele fotograaf in Nijverdal voor bedrijven en particulieren.',
+    description: 'Professionele fotograaf in Nijverdal voor bedrijven en organisaties.',
   },
   {
     label: 'Bedrijfsfotograaf Nijverdal',
@@ -103,7 +98,7 @@ export const LANDING_PAGES = [
   {
     label: 'Fotograaf Hellendoorn',
     href: '/landingspaginas/fotograaf-hellendoorn/',
-    description: 'Fotograaf in de gemeente Hellendoorn — bedrijven, gezinnen en honden.',
+    description: 'Fotograaf in de gemeente Hellendoorn — voor bedrijven, ondernemers en organisaties.',
   },
   {
     label: 'Fotograaf Wierden',
@@ -113,7 +108,7 @@ export const LANDING_PAGES = [
   {
     label: 'Fotograaf Rijssen',
     href: '/landingspaginas/fotograaf-rijssen/',
-    description: 'Professionele fotografie voor bedrijven en particulieren in Rijssen.',
+    description: 'Professionele fotografie voor bedrijven en organisaties in Rijssen.',
   },
   {
     label: 'Fotograaf Almelo',
@@ -136,9 +131,9 @@ export const LANDING_PAGES = [
     description: 'Zakelijke portretten en bedrijfsfotografie in Twente.',
   },
   {
-    label: 'Hondenfotograaf Twente',
-    href: '/landingspaginas/hondenfotograaf-twente/',
-    description: 'Liefdevolle hondenfotografie in Twente en Overijssel.',
+    label: 'Evenementenfotograaf Twente',
+    href: '/landingspaginas/evenementenfotograaf-twente/',
+    description: 'Fotografie van zakelijke evenementen, openingen en bijeenkomsten in Twente.',
   },
 ];
 
