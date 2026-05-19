@@ -1,0 +1,259 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Faq from '../components/Faq.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+import { SITE } from '../config';
+
+const title = 'Personal Branding Fotografie Nijverdal | Fotograaf Peter';
+const description = 'Personal branding fotografie voor ondernemers en zzp\'ers in Nijverdal, Twente en Overijssel. Authentieke portretten voor website, social media en LinkedIn. Geen poses — wel jij op je best.';
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Personal Branding', href: '/personal-branding/' },
+];
+
+const serviceLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${SITE.url}/personal-branding/#service`,
+  serviceType: 'Personal Branding Fotografie',
+  name: 'Personal Branding Fotografie Nijverdal',
+  description: description,
+  provider: { '@id': `${SITE.url}/#business` },
+  areaServed: SITE.serviceArea.map((a) => ({ '@type': 'City', name: a })),
+};
+
+const faqItems = [
+  {
+    question: 'Wat is personal branding fotografie precies?',
+    answer: `Personal branding fotografie zijn beelden waarop <strong>jij als persoon centraal staat</strong>. Niet je product, niet je logo — jij. Voor ondernemers, coaches, zzp'ers en experts die op LinkedIn, hun website, podcast-platforms of social media een gezicht willen zijn dat mensen onthouden. Het verschil met een gewoon portret: we werken vanuit jouw merk, niet vanuit een standaardpose.`,
+  },
+  {
+    question: 'Ik sta liever niet op de foto. Kun je daar wat mee?',
+    answer: `Heel veel zelfs. Negen van de tien klanten zegt dit. Mijn werkwijze is rustig en zonder druk — we beginnen met praten, een kop koffie, en pas daarna pak ik de camera erbij. Geen forse direct-in-de-camera-kijk-poses, geen "lach es!". Resultaat: foto's waarop je <em>jezelf</em> herkent.`,
+  },
+  {
+    question: 'Wat krijg ik bij een personal branding shoot?',
+    answer: `Standaard 15–25 zorgvuldig bewerkte beelden in verschillende beeldverhoudingen — portret-staand voor LinkedIn, liggend voor je website-hero, vierkant voor Instagram. Inclusief variatie: dichtbij, midden, sfeer, "aan het werk" en lifestyle. Zodat je voor maanden vooruit kan op social.`,
+  },
+  {
+    question: 'Hoe bereiden we de shoot voor?',
+    answer: `Vooraf bespreken we: jouw merk, jouw doelgroep, jouw stijl. Welke kleuren passen, welke locatie zegt iets over wat je doet, welke beelden wil je gebruiken en waarvoor. Ik stuur een korte voorbereiding met tips over outfits, kapsel en mindset. Op de dag zelf bouwen we het rustig op.`,
+  },
+  {
+    question: 'Locatie of studio?',
+    answer: `Vaak een combi. Een studio of neutrale ruimte voor de strakke portretten. En een locatie die bij jouw verhaal past — je eigen werkplek, een mooie buitenlocatie in Twente, een café, een atelier — voor de lifestyle-beelden. Samen kiezen we wat klopt.`,
+  },
+  {
+    question: 'Hoe vaak moet ik dit doen?',
+    answer: `Voor de meeste ondernemers is een grondige personal branding shoot één keer per jaar of anderhalf jaar genoeg. Tussendoor kun je putten uit de variatie die we tijdens de shoot hebben gemaakt. Verandert je merk of je uitstraling? Dan plannen we een nieuwe sessie.`,
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/personal-branding/"
+  pageType="Service"
+  breadcrumbs={breadcrumbs}
+  extraJsonLd={[serviceLd]}
+>
+  <PageHeader
+    eyebrow="Dienst № 02"
+    title="Personal branding voor ondernemers die zichzelf willen zijn"
+    description="Voor zzp'ers, coaches, experts en ondernemers in Nijverdal, Twente en Overijssel. Foto's die niet poseren — wél de persoon laten zien die mensen straks willen boeken."
+    breadcrumbs={breadcrumbs}
+    image="/images/headers/personal-branding.jpg"
+    imageAlt="Personal branding fotografie — ondernemersportret"
+  />
+
+  <section class="why-section">
+    <div class="container why-grid">
+      <div class="why-text">
+        <span class="eyebrow">Waarom dit werkt</span>
+        <h2>Mensen kopen van mensen</h2>
+        <p>
+          Je website kan strak zijn, je dienst kan goud waard zijn, je tarief kan kloppen —
+          maar als je doelgroep niet ziet <em>wie</em> je bent, haken ze af. Personal branding
+          fotografie sluit dat gat.
+        </p>
+        <p>
+          Een sterke set beelden van jou — in jouw element, in jouw kleuren, met jouw blik —
+          maakt dat een vreemde je herkent voordat ze met je hebben gesproken. En dat ze
+          sneller "ja" zeggen wanneer dat moment komt.
+        </p>
+      </div>
+      <div class="why-stats">
+        <div class="stat">
+          <span class="stat-num">15–25</span>
+          <span class="stat-label">bewerkte beelden in je galerij</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">3</span>
+          <span class="stat-label">beeldverhoudingen per foto — LinkedIn, web, social</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">10 wd</span>
+          <span class="stat-label">levering na de shoot</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="forwhom-section">
+    <div class="container">
+      <span class="eyebrow">Voor wie</span>
+      <h2>Wie ik vooral fotografeer</h2>
+      <div class="forwhom-grid">
+        <article>
+          <div class="forwhom-media">
+            <img src="/images/services/branding-zzp.jpg" alt="ZZP'ers en freelancers" loading="lazy" />
+          </div>
+          <div class="forwhom-body">
+            <h3>ZZP'ers & freelancers</h3>
+            <p>Coaches, consultants, designers, ontwikkelaars, therapeuten — iedereen die als zichzelf onderneemt.</p>
+          </div>
+        </article>
+        <article>
+          <div class="forwhom-media">
+            <img src="/images/services/branding-spreker.jpg" alt="Sprekers en experts" loading="lazy" />
+          </div>
+          <div class="forwhom-body">
+            <h3>Sprekers & experts</h3>
+            <p>Mensen die op een podium staan, in podcasts spreken, of als thought leader gevonden willen worden.</p>
+          </div>
+        </article>
+        <article>
+          <div class="forwhom-media">
+            <img src="/images/services/branding-ondernemer.jpg" alt="Ondernemers met een gezicht" loading="lazy" />
+          </div>
+          <div class="forwhom-body">
+            <h3>Ondernemers met een gezicht</h3>
+            <p>Eigenaren van kleine bedrijven waar de oprichter zelf het uithangbord is — voor klanten én voor talent.</p>
+          </div>
+        </article>
+        <article>
+          <div class="forwhom-media">
+            <img src="/images/services/branding-maker.jpg" alt="Auteurs en makers" loading="lazy" />
+          </div>
+          <div class="forwhom-body">
+            <h3>Auteurs & makers</h3>
+            <p>Schrijvers, kunstenaars en creatieven die portretten nodig hebben bij hun werk, op covers en in pers.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqItems} />
+
+  <CtaBlock
+    eyebrow="Klaar voor jouw shoot?"
+    title="Een gesprek kost niets"
+    description="Stuur me een berichtje of bel. We kijken samen of het klikt en wat het beste plan is voor jouw merk."
+  />
+</BaseLayout>
+
+<style>
+  .why-section { padding-block: clamp(3rem, 6vw, 5rem); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+  @media (max-width: 800px) { .why-grid { grid-template-columns: 1fr; } }
+
+  .why-text h2 {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .why-text p {
+    color: var(--color-ink-soft);
+    margin-bottom: 1.25rem;
+    max-width: 50ch;
+  }
+  .why-text em { color: var(--color-accent); }
+
+  .why-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .stat {
+    padding: 1.5rem;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius);
+    border-left: 3px solid var(--color-accent);
+  }
+  .stat-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw + 1rem, 3rem);
+    line-height: 1;
+    color: var(--color-ink);
+    letter-spacing: -0.03em;
+  }
+  .stat-label {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+    max-width: 30ch;
+  }
+
+  .forwhom-section {
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+    background: var(--color-bg-alt);
+  }
+  .forwhom-section h2 {
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .forwhom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+  .forwhom-grid article {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-line);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all var(--t);
+  }
+  .forwhom-grid article:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -18px rgba(26, 24, 20, 0.18);
+  }
+  .forwhom-media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--color-bg-alt);
+  }
+  .forwhom-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .forwhom-grid article:hover .forwhom-media img {
+    transform: scale(1.04);
+  }
+  .forwhom-body {
+    padding: 1.5rem 1.5rem 1.75rem;
+  }
+  .forwhom-grid h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.6rem;
+  }
+  .forwhom-grid p {
+    color: var(--color-ink-soft);
+    font-size: 0.95rem;
+  }
+</style>
