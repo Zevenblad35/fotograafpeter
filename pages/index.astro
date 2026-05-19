@@ -1,0 +1,291 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import Faq from '../components/Faq.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+import { SITE } from '../config';
+
+const title = 'Fotograaf Nijverdal | Bedrijfsfotografie & Personal Branding';
+const description = 'Fotograaf Peter uit Nijverdal. Bedrijfsfotografie, personal branding, reclamefotografie en evenementenfotografie voor ondernemers en organisaties in Twente en Overijssel. Echte beelden, geen stock.';
+
+const services = [
+  {
+    number: '№ 01',
+    title: 'Bedrijfsfotografie',
+    description: 'Beelden die laten zien wie jullie écht zijn. Voor websites, LinkedIn, jaarverslagen en social. Geen gladde stockfoto\'s — wel professioneel.',
+    href: '/bedrijfsfotografie/',
+    tags: ['Teams', 'Sfeer', 'Aan het werk'],
+    image: '/images/services/service-bedrijf.jpg',
+    imageAlt: 'Bedrijfsfotografie — team op locatie',
+  },
+  {
+    number: '№ 02',
+    title: 'Personal Branding',
+    description: 'Voor ondernemers en zzp\'ers die zichzelf willen laten zien. Niet poseren — wél scherp, persoonlijk en bij je merk passend.',
+    href: '/personal-branding/',
+    tags: ['ZZP', 'Coaches', 'Experts'],
+    image: '/images/services/service-branding.jpg',
+    imageAlt: 'Personal branding — ondernemersportret',
+  },
+  {
+    number: '№ 03',
+    title: 'Reclamefotografie',
+    description: 'Product- en campagnebeeld voor merken in Twente en Overijssel. Foto\'s die opvallen tussen alle ruis — in advertenties én op de plank.',
+    href: '/reclamefotografie/',
+    tags: ['Product', 'Campagne', 'Food'],
+    image: '/images/services/service-reclame.jpg',
+    imageAlt: 'Reclamefotografie — productshoot',
+  },
+];
+
+const faqItems = [
+  {
+    question: 'Waar is Fotograaf Peter gevestigd?',
+    answer: `Mijn studio en uitvalsbasis zit aan de Zevenblad 35 in <strong>Nijverdal</strong> (7443 LZ). Ik werk in heel <strong>Twente en Overijssel</strong> — denk aan Hellendoorn, Wierden, Rijssen, Almelo, Hengelo, Enschede en omgeving. Voor opdrachten kom ik graag naar je toe.`,
+  },
+  {
+    question: 'Welke fotografie doet Peter precies?',
+    answer: `Drie hoofdrichtingen: <strong>bedrijfsfotografie</strong> (teams, sfeer, aan-het-werk-beelden), <strong>personal branding</strong> (voor ondernemers en zzp'ers), en <strong>reclamefotografie</strong> (product, food, interieur, campagnebeeld). Daarnaast verzorg ik ook evenementenfotografie en zakelijke portretten. Mijn focus ligt volledig op opdrachten voor bedrijven en organisaties.`,
+  },
+  {
+    question: 'Wat kost een fotoshoot?',
+    answer: `Tarieven hangen af van het type opdracht, de duur, de locatie en het aantal foto's dat je nodig hebt. Voor een bedrijfsshoot werk ik vaak met dagdeel- of dagtarieven inclusief nabewerking. Personal branding heeft een vast pakkettarief. Stuur me een berichtje en ik maak een transparante offerte op maat.`,
+  },
+  {
+    question: 'Hoe snel krijg ik de foto\'s na de shoot?',
+    answer: `Standaard lever ik binnen <strong>10 werkdagen</strong> de geselecteerde en bewerkte foto's via een online galerij. Heb je iets eerder nodig (bijvoorbeeld voor een lancering of campagne), zeg het — vaak kan dat geregeld worden tegen een kleine spoedtoeslag.`,
+  },
+  {
+    question: 'Voor wie werk je het meest?',
+    answer: `Vooral voor <strong>zzp'ers, mkb-bedrijven, organisaties en lokale merken</strong> in Twente en Overijssel. Van consultants en bouwbedrijven tot restaurants, vastgoed, sportverenigingen en e-commerce. Wat ze gemeen hebben: ze willen beelden die kloppen bij hun verhaal — niet bij een template.`,
+  },
+  {
+    question: 'Kun je ook naar mijn locatie komen?',
+    answer: `Ja, dat is bij bedrijfsfotografie eigenlijk altijd zo. Op locatie werken levert vaak de beste beelden — je werkplek, je team, je producten in hun natuurlijke omgeving. Voor portretten en personal branding combineer ik graag locatie en studio.`,
+  },
+];
+
+const extraJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Fotografie',
+    provider: { '@id': `${SITE.url}/#business` },
+    areaServed: SITE.serviceArea.map((a) => ({ '@type': 'City', name: a })),
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Fotografie diensten',
+      itemListElement: services.map((s, i) => ({
+        '@type': 'Offer',
+        position: i + 1,
+        itemOffered: {
+          '@type': 'Service',
+          name: s.title,
+          description: s.description,
+          url: new URL(s.href, SITE.url).toString(),
+        },
+      })),
+    },
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/"
+  extraJsonLd={extraJsonLd}
+>
+  <Hero
+    eyebrow="Voor ondernemers & organisaties · Nijverdal"
+    title="Echte beelden,"
+    titleEm="echte verhalen."
+    description="Bedrijfsfotografie, personal branding en reclamefotografie voor ondernemers, mkb en organisaties in Nijverdal, Twente en Overijssel. Geen gemaakte poses — wel beelden die laten zien hoe iets écht is."
+    primaryCta={{ label: 'Plan een fotoshoot', href: '/contact/' }}
+    secondaryCta={{ label: 'Bekijk diensten', href: '#diensten' }}
+    image="/images/headers/home.jpg"
+    imageAlt="Fotograaf Peter — sfeerbeeld"
+  />
+
+  <section class="intro-section">
+    <div class="container intro-grid">
+      <div class="intro-meta">
+        <span class="eyebrow">Wie ben ik</span>
+        <p class="intro-stat">
+          <span class="intro-num">2016</span>
+          <span class="intro-num-label">gestart als Fotograaf Peter</span>
+        </p>
+      </div>
+      <div class="intro-text">
+        <p class="lead">
+          Ik ben <strong>Peter Rutgers</strong> — fotograaf in Nijverdal.
+          Ik leg <em>echte momenten, echte mensen en echte verhalen</em> vast.
+          Geen gemaakte poses, wel beelden die laten zien hoe iets echt is.
+        </p>
+        <p>
+          Vandaag werk ik vooral voor <strong>ondernemers, mkb-bedrijven en
+          organisaties</strong> in Twente en Overijssel. Voor wie genoeg heeft van
+          flauwe portretten en stockfoto's — en beelden wil die écht iets zeggen.
+          Naast fotografie help ik ondernemers via <a href="https://www.peterrutgersmedia.nl" rel="noopener" class="link-inline">Peter Rutgers Media</a>
+          ook met hun online zichtbaarheid.
+        </p>
+        <a href="/over-peter/" class="btn-ghost btn">
+          Lees Peter's verhaal
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div id="diensten">
+    <ServiceGrid
+      eyebrow="Diensten"
+      title="Drie richtingen, één doel"
+      intro="Of het nu om je bedrijf, je persoonlijke merk of je product gaat — de aanpak blijft hetzelfde: rustig, oprecht, met aandacht voor het detail dat het verschil maakt."
+      services={services}
+    />
+  </div>
+
+  <section class="region-section">
+    <div class="container region-grid">
+      <div class="region-text">
+        <span class="eyebrow">Werkgebied</span>
+        <h2>Lokaal verankerd, regionaal actief</h2>
+        <p>
+          Mijn basis is <strong>Nijverdal</strong>. Ik fotografeer met regelmaat in
+          <strong>Hellendoorn, Wierden, Rijssen, Almelo, Hengelo en Enschede</strong> —
+          en zo'n beetje alles daartussenin. Omdat ik hier zelf vandaan kom, ken ik de
+          omgeving en de mensen. Dat maakt samenwerken vaak makkelijker en persoonlijker.
+        </p>
+        <p>
+          Werkt jouw bedrijf verder weg in Overijssel of net erbuiten? Stuur me een
+          berichtje — vrijwel alles is mogelijk.
+        </p>
+      </div>
+      <ul class="region-list">
+        {SITE.serviceArea.map((area) => (
+          <li><span class="dot"></span>{area}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Faq items={faqItems} />
+
+  <CtaBlock />
+</BaseLayout>
+
+<style>
+  .intro-section {
+    padding-block: clamp(3rem, 6vw, 5rem);
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  @media (max-width: 800px) {
+    .intro-grid { grid-template-columns: 1fr; }
+  }
+
+  .intro-meta {
+    border-top: 1px solid var(--color-line);
+    padding-top: 1.5rem;
+  }
+
+  .intro-stat {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .intro-num {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 5.5rem);
+    font-weight: 250;
+    line-height: 1;
+    color: var(--color-accent);
+    letter-spacing: -0.03em;
+  }
+  .intro-num-label {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    margin-top: 0.5rem;
+    max-width: 20ch;
+  }
+
+  .intro-text {
+    border-top: 1px solid var(--color-line);
+    padding-top: 1.5rem;
+  }
+
+  .intro-text .lead {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 1.5vw + 1rem, 1.75rem);
+    line-height: 1.4;
+    font-weight: 350;
+    color: var(--color-ink);
+    letter-spacing: -0.015em;
+    margin-bottom: 1.5rem;
+  }
+  .intro-text p {
+    color: var(--color-ink-soft);
+    margin-bottom: 1.5rem;
+  }
+  .intro-text em {
+    color: var(--color-accent);
+  }
+
+  .region-section {
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+    background: var(--color-bg-alt);
+  }
+
+  .region-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  @media (max-width: 800px) {
+    .region-grid { grid-template-columns: 1fr; }
+  }
+
+  .region-text h2 {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .region-text p {
+    color: var(--color-ink-soft);
+    margin-bottom: 1rem;
+  }
+
+  .region-list {
+    list-style: none;
+    padding: 0;
+    columns: 2;
+    column-gap: 1.5rem;
+  }
+  .region-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px dashed var(--color-line);
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--color-ink);
+    break-inside: avoid;
+  }
+  .region-list .dot {
+    width: 5px;
+    height: 5px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+</style>

@@ -1,0 +1,98 @@
+---
+import { SITE } from '../config';
+
+export interface Props {
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+}
+
+const {
+  eyebrow = 'Laten we kennismaken',
+  title = 'Klaar om jouw verhaal vast te leggen?',
+  description = 'Stuur een berichtje of bel me. Geen verkooppraat — gewoon een gesprek over wat je nodig hebt.',
+} = Astro.props;
+---
+
+<section class="cta-block">
+  <div class="container cta-inner">
+    <div class="cta-text">
+      <span class="eyebrow">{eyebrow}</span>
+      <h2>{title}</h2>
+      <p>{description}</p>
+    </div>
+    <div class="cta-actions">
+      <a href="/contact/" class="btn btn-primary">
+        Plan een fotoshoot
+        <span class="arrow">→</span>
+      </a>
+      <div class="cta-direct">
+        <a href={`tel:${SITE.contact.phone}`} class="link-inline">{SITE.contact.phoneDisplay}</a>
+        <span class="sep">·</span>
+        <a href={`mailto:${SITE.contact.email}`} class="link-inline">{SITE.contact.email}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-block {
+    padding-block: clamp(3rem, 8vw, 5.5rem);
+    background: var(--color-bg-alt);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-block::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 60%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(139, 90, 43, 0.08), transparent 60%);
+    pointer-events: none;
+  }
+
+  .cta-inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+  }
+
+  @media (max-width: 800px) {
+    .cta-inner { grid-template-columns: 1fr; }
+  }
+
+  .cta-text h2 {
+    margin-top: 0.75rem;
+    font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem);
+    line-height: 1.05;
+    max-width: 14ch;
+  }
+
+  .cta-text p {
+    margin-top: 1.25rem;
+    color: var(--color-ink-soft);
+    font-size: 1.05rem;
+    max-width: 45ch;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .cta-direct {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    color: var(--color-ink-muted);
+    font-size: 0.9rem;
+  }
+  .cta-direct .sep { opacity: 0.5; }
+</style>

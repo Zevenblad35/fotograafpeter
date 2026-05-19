@@ -1,0 +1,252 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Faq from '../components/Faq.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+import { SITE } from '../config';
+
+const title = 'Reclamefotografie Nijverdal & Twente | Product & Campagne';
+const description = 'Reclamefotografie in Nijverdal en Twente: productfotografie, food, campagnebeeld en interieur. Foto\'s die opvallen — voor merken, e-commerce en advertenties.';
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Reclamefotografie', href: '/reclamefotografie/' },
+];
+
+const serviceLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${SITE.url}/reclamefotografie/#service`,
+  serviceType: 'Reclamefotografie',
+  name: 'Reclamefotografie Nijverdal',
+  description,
+  provider: { '@id': `${SITE.url}/#business` },
+  areaServed: SITE.serviceArea.map((a) => ({ '@type': 'City', name: a })),
+};
+
+const specialties = [
+  {
+    title: 'Productfotografie',
+    description: 'Voor e-commerce, catalogus en webshop. Pakshots met cleane achtergrond én sfeerbeelden waar je product ademt.',
+    use: 'Webshop · Bol · Amazon · Catalogi',
+    image: '/images/services/reclame-product.jpg',
+    alt: 'Productfotografie',
+  },
+  {
+    title: 'Food fotografie',
+    description: 'Voor restaurants, caterers en foodmerken. Gerechten die je vrijdagmiddag nog wilt bestellen vanaf je telefoon.',
+    use: 'Menukaart · Social · Verpakking',
+    image: '/images/services/reclame-food.jpg',
+    alt: 'Food fotografie',
+  },
+  {
+    title: 'Interieur & vastgoed',
+    description: 'Voor architecten, makelaars, hotels en horeca. Ruimtes die overtuigen — licht, lijnen, sfeer kloppen.',
+    use: 'Funda · Booking · Architectenwebsite',
+    image: '/images/services/reclame-interieur.jpg',
+    alt: 'Interieurfotografie',
+  },
+  {
+    title: 'Campagnebeeld',
+    description: 'Voor merken die een visuele wending willen — concept, locatie, modellen, styling. Eén verhaal in één beeld.',
+    use: 'Advertenties · Drukwerk · OOH',
+    image: '/images/services/reclame-campagne.jpg',
+    alt: 'Campagnebeeld',
+  },
+];
+
+const faqItems = [
+  {
+    question: 'Wat kost reclamefotografie?',
+    answer: `Reclamefotografie verschilt enorm per opdracht. Een serie pakshots voor een webshop kan starten vanaf een paar honderd euro; een campagneshoot met concept, locatie en model loopt al snel in de duizenden. Stuur me het project (wat, waar, hoeveel beelden, waarvoor) en ik maak een transparante offerte.`,
+  },
+  {
+    question: 'Doe je ook food fotografie?',
+    answer: `Ja. Voor lokale restaurants, caterers en foodmerken in Twente en Overijssel. Op locatie (jouw keuken of restaurant) of in een tijdelijk ingerichte setting. Inclusief styling-tips of in samenwerking met een foodstylist als het project dat vraagt.`,
+  },
+  {
+    question: 'Werk je voor e-commerce / webshops?',
+    answer: `Veel. Strakke pakshots op witte achtergrond voor productpagina's, lifestyle-beelden voor je hero-banners en sfeerbeelden voor social en advertenties — vaak in één shootdag te combineren.`,
+  },
+  {
+    question: 'Wat is het verschil met bedrijfsfotografie?',
+    answer: `Bedrijfsfotografie laat zien <strong>wie je bent</strong>; reclamefotografie laat zien <strong>wat je verkoopt</strong> en hoe je dat aan de man brengt. Bedrijfsfoto's gaan over mensen en cultuur; reclamefoto's gaan over product, propositie en concept. Vaak overlappen ze.`,
+  },
+  {
+    question: 'Mogen we de beelden gebruiken voor advertenties?',
+    answer: `Ja, een standaardlicentie dekt commercieel gebruik op je eigen website, social media, e-commerce, en advertenties van redelijke omvang. Voor zeer grootschalige campagnes (landelijk OOH, TV) maken we vooraf duidelijke licentie-afspraken — dat is gangbaar in dit vak.`,
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/reclamefotografie/"
+  pageType="Service"
+  breadcrumbs={breadcrumbs}
+  extraJsonLd={[serviceLd]}
+>
+  <PageHeader
+    eyebrow="Dienst № 03"
+    title="Reclamefotografie die opvalt tussen de ruis"
+    description="Productfotografie, food, interieur en campagnebeeld voor merken en bedrijven in Nijverdal, Twente en Overijssel. Niet één-uit-tienduizend — wel scherp, consistent en herkenbaar."
+    breadcrumbs={breadcrumbs}
+    image="/images/headers/reclamefotografie.jpg"
+    imageAlt="Reclamefotografie — studio setup"
+  />
+
+  <section class="approach-section">
+    <div class="container">
+      <div class="approach-grid">
+        <div class="approach-text">
+          <span class="eyebrow">Aanpak</span>
+          <h2>Eerst denken, dan klikken</h2>
+          <p>
+            Een goede reclamefoto begint niet bij de camera. Hij begint bij de vraag:
+            <em>wat moet deze foto doen?</em> Mensen overtuigen om iets te kopen?
+            Een merk een gevoel meegeven? Een product in z'n natuurlijke omgeving laten zien?
+          </p>
+          <p>
+            Pas als die vraag scherp is, kies ik licht, locatie, lens en styling.
+            Daarom werk ik graag voor merken die zelf nadenken over hun visuele identiteit
+            — geen "maak het maar mooi", wel "dit is wat we willen vertellen".
+          </p>
+        </div>
+        <ul class="approach-list">
+          <li><strong>Conceptueel:</strong> ik denk mee over moodboard en uitwerking</li>
+          <li><strong>Technisch:</strong> haarscherp, kleurkorrect, productioneel klaar</li>
+          <li><strong>Consistent:</strong> stijl die past bij jouw merkidentiteit</li>
+          <li><strong>Praktisch:</strong> levering in alle formaten die je nodig hebt</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="specialties-section">
+    <div class="container">
+      <div class="specialties-head">
+        <span class="eyebrow">Specialisaties</span>
+        <h2>Vier richtingen binnen reclamefotografie</h2>
+      </div>
+      <div class="specialties-grid">
+        {specialties.map((s, i) => (
+          <article class="specialty-card">
+            <div class="specialty-media">
+              <img src={s.image} alt={s.alt} loading="lazy" />
+            </div>
+            <div class="specialty-body">
+              <span class="specialty-num">№ 0{i + 1}</span>
+              <h3>{s.title}</h3>
+              <p>{s.description}</p>
+              <span class="specialty-use">{s.use}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqItems} />
+
+  <CtaBlock
+    eyebrow="Heb je een project?"
+    title="Laten we het uitwerken"
+    description="Stuur me wat je wilt, waar het voor is en wanneer je het nodig hebt. Ik denk mee."
+  />
+</BaseLayout>
+
+<style>
+  .approach-section { padding-block: clamp(3rem, 6vw, 5rem); }
+  .approach-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+  @media (max-width: 800px) { .approach-grid { grid-template-columns: 1fr; } }
+  .approach-text h2 { margin-top: 1rem; margin-bottom: 1.5rem; }
+  .approach-text p { color: var(--color-ink-soft); margin-bottom: 1.25rem; max-width: 55ch; }
+  .approach-text em { color: var(--color-accent); }
+  .approach-list {
+    list-style: none; padding: 0;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .approach-list li {
+    padding: 1.25rem 1.5rem;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    color: var(--color-ink-soft);
+  }
+  .approach-list strong { color: var(--color-ink); }
+
+  .specialties-section {
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+    background: var(--color-bg-alt);
+  }
+  .specialties-head { max-width: 600px; margin-bottom: 2.5rem; }
+  .specialties-head h2 { margin-top: 1rem; }
+
+  .specialties-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 700px) { .specialties-grid { grid-template-columns: 1fr; } }
+
+  .specialty-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    transition: all var(--t);
+    overflow: hidden;
+  }
+  .specialty-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -18px rgba(26, 24, 20, 0.18);
+  }
+  .specialty-media {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--color-bg-alt);
+  }
+  .specialty-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .specialty-card:hover .specialty-media img {
+    transform: scale(1.04);
+  }
+  .specialty-body {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex-grow: 1;
+  }
+  .specialty-num {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    color: var(--color-accent);
+  }
+  .specialty-card h3 { font-size: 1.4rem; }
+  .specialty-card p {
+    color: var(--color-ink-soft);
+    font-size: 0.95rem;
+    flex-grow: 1;
+  }
+  .specialty-use {
+    font-size: 0.78rem;
+    color: var(--color-ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-top: 1px dashed var(--color-line);
+    padding-top: 0.85rem;
+    margin-top: 0.25rem;
+  }
+</style>
