@@ -21,8 +21,8 @@ export const SITE = {
   // Contact
   contact: {
     email: 'peter@fotograafpeter.nl',
-    phone: '+31629251220',
-    phoneDisplay: '06 - 29 25 12 20',
+    phone: '+31851155136',
+    phoneDisplay: '085 115 5136',
     address: {
       street: 'Zevenblad 35',
       postalCode: '7443 LZ',

@@ -1,0 +1,329 @@
+---
+import { SITE } from '../config';
+
+// Stuur openingsuren als JSON naar het script zodat het real-time kan berekenen
+// of we open zijn. Volgorde Maandag..Zondag.
+const hoursData = SITE.openingHours.map((d, i) => ({
+  // JS Date.getDay() geeft 0=zondag, 1=maandag etc.
+  // Onze array is Ma..Zo dus index → js-day-of-week:
+  jsDay: i === 6 ? 0 : i + 1,
+  label: d.day,
+  hours: d.hours,
+  isOpen: d.isOpen,
+  open: d.isOpen ? d.open : null,
+  close: d.isOpen ? d.close : null,
+}));
+---
+
+<div class="status-led" data-hours={JSON.stringify(hoursData)}>
+  <button
+    type="button"
+    class="status-trigger"
+    aria-label="Status en openingstijden"
+    aria-expanded="false"
+    aria-haspopup="true"
+  >
+    <span class="led" aria-hidden="true">
+      <span class="led-dot"></span>
+      <span class="led-pulse"></span>
+    </span>
+    <span class="status-label" data-status-text>—</span>
+  </button>
+
+  <div class="status-popover" role="dialog" aria-label="Openingstijden" hidden>
+    <div class="popover-head">
+      <span class="popover-state" data-popover-state>—</span>
+      <span class="popover-sub" data-popover-sub>Openingstijden</span>
+    </div>
+    <ul class="popover-hours" data-popover-list>
+      {SITE.openingHours.map(d => (
+        <li class:list={[{ closed: !d.isOpen }]} data-day={d.day}>
+          <span class="day">{d.day}</span>
+          <span class="hrs">{d.hours}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<style>
+  .status-led {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .status-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.5rem 0.85rem;
+    background: transparent;
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all var(--t);
+    font-size: 0.78rem;
+    color: var(--color-ink-soft);
+    letter-spacing: 0.05em;
+  }
+  .status-trigger:hover {
+    border-color: var(--color-ink);
+    color: var(--color-ink);
+  }
+
+  /* LED */
+  .led {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .led-dot {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #888;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+    transition: background 400ms ease, box-shadow 400ms ease;
+  }
+  .led-pulse {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #888;
+    opacity: 0.6;
+    transform: scale(1);
+    animation: led-pulse 2s ease-in-out infinite;
+  }
+
+  /* Status: open (groen) */
+  .status-led[data-state="open"] .led-dot {
+    background: #2dbf5f;
+    box-shadow: 0 0 8px rgba(45, 191, 95, 0.55);
+  }
+  .status-led[data-state="open"] .led-pulse {
+    background: #2dbf5f;
+  }
+  .status-led[data-state="open"] .status-trigger {
+    color: var(--color-ink);
+  }
+
+  /* Status: dicht (rood) */
+  .status-led[data-state="closed"] .led-dot {
+    background: #e04a4a;
+    box-shadow: 0 0 8px rgba(224, 74, 74, 0.45);
+  }
+  .status-led[data-state="closed"] .led-pulse {
+    background: #e04a4a;
+  }
+
+  @keyframes led-pulse {
+    0%   { transform: scale(1);    opacity: 0.55; }
+    70%  { transform: scale(2.6);  opacity: 0; }
+    100% { transform: scale(2.6);  opacity: 0; }
+  }
+
+  /* Popover */
+  .status-popover {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    right: 0;
+    min-width: 240px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius);
+    box-shadow: 0 20px 50px -20px rgba(26, 24, 20, 0.25);
+    padding: 1rem 1.1rem 1.1rem;
+    z-index: 60;
+    animation: popover-in 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @keyframes popover-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .popover-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .popover-state {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--color-ink);
+  }
+  .status-led[data-state="open"] .popover-state {
+    color: #1e7d3f;
+  }
+  .status-led[data-state="closed"] .popover-state {
+    color: #b03434;
+  }
+  .popover-sub {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-ink-muted);
+  }
+
+  .popover-hours {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .popover-hours li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.32rem 0;
+    font-size: 0.85rem;
+    color: var(--color-ink-soft);
+    border-bottom: 1px dashed transparent;
+  }
+  .popover-hours li.closed { color: var(--color-ink-muted); }
+  .popover-hours li.today {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+  .popover-hours li.today .day::before {
+    content: '→ ';
+    color: var(--color-accent);
+  }
+</style>
+
+<script>
+  type DayData = {
+    jsDay: number;
+    label: string;
+    hours: string;
+    isOpen: boolean;
+    open: string | null;
+    close: string | null;
+  };
+
+  const wrappers = document.querySelectorAll<HTMLElement>('.status-led');
+
+  wrappers.forEach((wrapper) => {
+    const raw = wrapper.dataset.hours;
+    if (!raw) return;
+    const hours: DayData[] = JSON.parse(raw);
+    const trigger = wrapper.querySelector<HTMLElement>('.status-trigger')!;
+    const popover = wrapper.querySelector<HTMLElement>('.status-popover')!;
+    const stateLabel = wrapper.querySelector<HTMLElement>('[data-status-text]')!;
+    const popoverState = wrapper.querySelector<HTMLElement>('[data-popover-state]')!;
+    const popoverSub = wrapper.querySelector<HTMLElement>('[data-popover-sub]')!;
+    const listItems = wrapper.querySelectorAll<HTMLElement>('[data-day]');
+
+    function parseHM(s: string): number {
+      const [h, m] = s.split(':').map(Number);
+      return h * 60 + m;
+    }
+
+    function updateStatus() {
+      const now = new Date();
+      const jsDay = now.getDay();
+      const minutes = now.getHours() * 60 + now.getMinutes();
+      const today = hours.find((h) => h.jsDay === jsDay);
+
+      let isOpen = false;
+      let label = 'Gesloten';
+      let sub = 'Openingstijden';
+
+      if (today && today.isOpen && today.open && today.close) {
+        const openM = parseHM(today.open);
+        const closeM = parseHM(today.close);
+        if (minutes >= openM && minutes < closeM) {
+          isOpen = true;
+          label = 'Open';
+          sub = `Vandaag tot ${today.close}`;
+        } else if (minutes < openM) {
+          label = 'Gesloten';
+          sub = `Vandaag open vanaf ${today.open}`;
+        } else {
+          label = 'Gesloten';
+          sub = 'Vandaag gesloten';
+        }
+      } else if (today) {
+        label = 'Gesloten';
+        sub = `Vandaag: ${today.hours.toLowerCase()}`;
+      }
+
+      wrapper.setAttribute('data-state', isOpen ? 'open' : 'closed');
+      stateLabel.textContent = label;
+      popoverState.textContent = label;
+      popoverSub.textContent = sub;
+
+      // Markeer "vandaag" in de lijst
+      listItems.forEach((li) => {
+        const day = li.dataset.day;
+        const dayData = hours.find((h) => h.label === day);
+        li.classList.toggle('today', dayData?.jsDay === jsDay);
+      });
+    }
+
+    // Initial + elke minuut updaten
+    updateStatus();
+    setInterval(updateStatus, 60_000);
+
+    // Hover/click/focus open/close
+    let hoverOpen = false;
+    let stickyOpen = false;
+
+    function show() {
+      popover.removeAttribute('hidden');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+    function hide() {
+      if (hoverOpen || stickyOpen) return;
+      popover.setAttribute('hidden', '');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    wrapper.addEventListener('mouseenter', () => {
+      hoverOpen = true;
+      show();
+    });
+    wrapper.addEventListener('mouseleave', () => {
+      hoverOpen = false;
+      setTimeout(hide, 100);
+    });
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      stickyOpen = !stickyOpen;
+      if (stickyOpen) show();
+      else hide();
+    });
+
+    trigger.addEventListener('focus', show);
+    trigger.addEventListener('blur', () => {
+      stickyOpen = false;
+      setTimeout(hide, 150);
+    });
+
+    // Klik buiten = sluiten
+    document.addEventListener('click', (e) => {
+      if (!wrapper.contains(e.target as Node)) {
+        stickyOpen = false;
+        hoverOpen = false;
+        hide();
+      }
+    });
+
+    // Esc = sluiten
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        stickyOpen = false;
+        hoverOpen = false;
+        hide();
+      }
+    });
+  });
+</script>

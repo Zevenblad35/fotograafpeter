@@ -1,5 +1,6 @@
 ---
 import { MAIN_MENU, SITE } from '../config';
+import StatusLed from './StatusLed.astro';
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) => {
@@ -34,12 +35,15 @@ const isActive = (href: string) => {
       </ul>
     </nav>
 
-    <a href="/contact/" class="header-cta">
-      <span>Plan shoot</span>
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" />
-      </svg>
-    </a>
+    <div class="header-actions">
+      <StatusLed />
+      <a href="/contact/" class="header-cta">
+        <span>Plan shoot</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" />
+        </svg>
+      </a>
+    </div>
 
     <button class="menu-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu">
       <span></span>
@@ -60,6 +64,9 @@ const isActive = (href: string) => {
           </li>
         ))}
       </ul>
+      <div class="mobile-status">
+        <StatusLed />
+      </div>
       <div class="mobile-contact">
         <a href={`tel:${SITE.contact.phone}`} class="link-inline">{SITE.contact.phoneDisplay}</a>
         <a href={`mailto:${SITE.contact.email}`} class="link-inline">{SITE.contact.email}</a>
@@ -171,6 +178,13 @@ const isActive = (href: string) => {
   .nav-link.is-active::after { transform: scaleX(1); }
   .nav-link.is-active { color: var(--color-ink); }
 
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-shrink: 0;
+  }
+
   .header-cta {
     display: inline-flex;
     align-items: center;
@@ -244,6 +258,12 @@ const isActive = (href: string) => {
   }
   .mobile-nav-link.is-active { color: var(--color-accent); }
 
+  .mobile-status {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-line);
+  }
+
   .mobile-contact {
     display: flex;
     flex-direction: column;
@@ -255,7 +275,7 @@ const isActive = (href: string) => {
 
   @media (max-width: 960px) {
     .primary-nav { display: none; }
-    .header-cta { display: none; }
+    .header-actions { display: none; }
     .menu-toggle { display: flex; }
   }
 
