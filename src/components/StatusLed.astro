@@ -131,6 +131,7 @@ const hoursData = SITE.openingHours.map((d, i) => ({
     top: calc(100% + 0.6rem);
     right: 0;
     min-width: 240px;
+    max-width: calc(100vw - 2rem);
     background: var(--color-surface);
     border: 1px solid var(--color-line);
     border-radius: var(--radius);
@@ -138,6 +139,12 @@ const hoursData = SITE.openingHours.map((d, i) => ({
     padding: 1rem 1.1rem 1.1rem;
     z-index: 60;
     animation: popover-in 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* In het mobiele menu staat de LED links — popover dan ook links uitlijnen */
+  :global(.mobile-menu) .status-popover {
+    left: 0;
+    right: auto;
   }
   @keyframes popover-in {
     from { opacity: 0; transform: translateY(-4px); }

@@ -249,14 +249,18 @@ const personLd = {
     gap: clamp(2rem, 5vw, 5rem);
   }
 
-  @media (max-width: 800px) {
-    .story-layout { grid-template-columns: 1fr; }
-  }
-
   .story-aside {
     position: sticky;
     top: 6rem;
     align-self: start;
+  }
+
+  @media (max-width: 800px) {
+    .story-layout { grid-template-columns: 1fr; }
+    .story-aside {
+      position: static;
+      top: auto;
+    }
   }
 
   .story-meta {
