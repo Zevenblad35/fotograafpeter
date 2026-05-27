@@ -62,7 +62,7 @@ en (2) zichtbaarheid in AI-tools (ChatGPT, Perplexity, Claude):
 - **Geo-tags** (`geo.region`, `geo.placename`, `geo.position`, `ICBM`) voor lokale SEO.
 - **Open Graph + Twitter Cards** met custom OG-image.
 - **hreflang `nl-NL`** + `x-default`.
-- **Sitemap** automatisch gegenereerd (`/sitemap-index.xml`).
+- **Sitemap** automatisch gegenereerd (`/sitemap.xml`).
 - **robots.txt** met expliciete `Allow` voor AI-crawlers
   (GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, OAI-SearchBot, Google-Extended, Applebot-Extended).
 - **Canonical URLs** op iedere pagina, gegenereerd uit het pad.
@@ -272,7 +272,7 @@ fotograafpeter/
 Een paar nuttige acties om de SEO een vliegende start te geven:
 
 1. **Google Search Console** — verifieer het domein en upload je sitemap
-   (`https://www.fotograafpeter.nl/sitemap-index.xml`).
+   (`https://www.fotograafpeter.nl/sitemap.xml`).
 2. **Bing Webmaster Tools** — idem, dit is óók de bron voor ChatGPT Search.
 3. **Google Business Profile** — zorg dat NAW, openingstijden en categorie
    identiek zijn aan wat in `src/config.ts` staat. Consistentie = beter
