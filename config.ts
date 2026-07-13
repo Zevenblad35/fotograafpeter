@@ -4,6 +4,12 @@
 export const SITE = {
   name: 'Fotograaf Peter',
   tagline: 'Echte beelden, echte verhalen',
+
+  // Contactformulier — Web3Forms (gratis): https://web3forms.com
+  // 1. Vul je e-mailadres in op web3forms.com → je krijgt direct een Access Key gemaild
+  // 2. Plak die key hieronder en build opnieuw
+  // Zolang dit leeg is, opent het formulier een e-mail met vooringevuld bericht.
+  formAccessKey: '5b2c34b4-1c04-4e13-9513-85786fe21240',
   description:
     'Fotograaf Peter uit Nijverdal — bedrijfsfotografie, personal branding, reclamefotografie en evenementenfotografie voor ondernemers en organisaties in Twente en Overijssel. Echte beelden, geen stock.',
   url: 'https://www.fotograafpeter.nl',
@@ -21,8 +27,8 @@ export const SITE = {
   // Contact
   contact: {
     email: 'peter@fotograafpeter.nl',
-    phone: '+31629251220',
-    phoneDisplay: '06 - 29 25 12 20',
+    phone: '+31851155136',
+    phoneDisplay: '085 115 5136',
     address: {
       street: 'Zevenblad 35',
       postalCode: '7443 LZ',
@@ -134,6 +140,56 @@ export const LANDING_PAGES = [
     label: 'Evenementenfotograaf Twente',
     href: '/landingspaginas/evenementenfotograaf-twente/',
     description: 'Fotografie van zakelijke evenementen, openingen en bijeenkomsten in Twente.',
+  },
+  {
+    label: 'Fotograaf Hengelo',
+    href: '/landingspaginas/fotograaf-hengelo/',
+    description: 'Zakelijke fotografie voor bedrijven en organisaties in Hengelo.',
+  },
+  {
+    label: 'Fotograaf Enschede',
+    href: '/landingspaginas/fotograaf-enschede/',
+    description: 'Zakelijke fotografie voor bedrijven en organisaties in Enschede.',
+  },
+  {
+    label: 'Bedrijfsfotograaf Twente',
+    href: '/landingspaginas/bedrijfsfotograaf-twente/',
+    description: 'Bedrijfsfotografie op locatie in heel Twente.',
+  },
+  {
+    label: 'Bedrijfsfotograaf Almelo',
+    href: '/landingspaginas/bedrijfsfotograaf-almelo/',
+    description: 'Bedrijfsfotografie voor mkb en industrie in Almelo.',
+  },
+  {
+    label: 'Personal Branding Fotograaf Twente',
+    href: '/landingspaginas/personal-branding-fotograaf-twente/',
+    description: 'Personal branding fotografie voor ondernemers in heel Twente.',
+  },
+  {
+    label: 'Productfotograaf Twente',
+    href: '/landingspaginas/productfotograaf-twente/',
+    description: 'Productfotografie voor webshops en merken in Twente.',
+  },
+  {
+    label: 'LinkedIn Fotograaf Twente',
+    href: '/landingspaginas/linkedin-fotograaf-twente/',
+    description: 'Professionele LinkedIn-profielfoto\'s voor professionals en teams.',
+  },
+  {
+    label: 'Fotograaf Holten',
+    href: '/landingspaginas/fotograaf-holten/',
+    description: 'Zakelijke fotografie in Holten en de gemeente Rijssen-Holten.',
+  },
+  {
+    label: 'Fotograaf Raalte',
+    href: '/landingspaginas/fotograaf-raalte/',
+    description: 'Zakelijke fotografie in Raalte en Salland.',
+  },
+  {
+    label: 'Bedrijfsfotograaf Overijssel',
+    href: '/landingspaginas/bedrijfsfotograaf-overijssel/',
+    description: 'Bedrijfsfotografie op locatie in heel Overijssel.',
   },
 ];
 

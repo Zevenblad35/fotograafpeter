@@ -100,9 +100,10 @@ const breadcrumbs = [
 
         <form
           class="contact-form"
-          action={`mailto:${SITE.contact.email}`}
           method="post"
-          enctype="text/plain"
+          data-form-key={SITE.formAccessKey}
+          data-mail-to={SITE.contact.email}
+          novalidate
         >
           <div class="form-row">
             <label for="naam">
@@ -145,9 +146,11 @@ const breadcrumbs = [
           </label>
 
           <button type="submit" class="btn btn-primary">
-            Verstuur bericht
+            <span class="btn-label">Verstuur bericht</span>
             <span class="arrow">→</span>
           </button>
+
+          <p class="form-status" data-form-status role="status" aria-live="polite" hidden></p>
 
           <p class="form-note">
             Voorkeur voor een ander kanaal? Bel <a href={`tel:${SITE.contact.phone}`}>{SITE.contact.phoneDisplay}</a>
@@ -159,9 +162,123 @@ const breadcrumbs = [
   </section>
 </BaseLayout>
 
+<script>
+  const form = document.querySelector<HTMLFormElement>('.contact-form');
+
+  if (form) {
+    const statusEl = form.querySelector<HTMLElement>('[data-form-status]')!;
+    const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const btnLabel = submitBtn.querySelector<HTMLElement>('.btn-label')!;
+    const accessKey = form.dataset.formKey || '';
+    const mailTo = form.dataset.mailTo || '';
+
+    function setStatus(msg: string, type: 'ok' | 'error') {
+      statusEl.textContent = msg;
+      statusEl.dataset.type = type;
+      statusEl.hidden = false;
+    }
+
+    function getValues() {
+      const fd = new FormData(form!);
+      return {
+        naam: String(fd.get('naam') || '').trim(),
+        bedrijf: String(fd.get('bedrijf') || '').trim(),
+        email: String(fd.get('email') || '').trim(),
+        telefoon: String(fd.get('telefoon') || '').trim(),
+        dienst: String(fd.get('dienst') || '').trim(),
+        bericht: String(fd.get('bericht') || '').trim(),
+      };
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Eigen validatie (novalidate op het form, dus hier checken)
+      const v = getValues();
+      if (!v.naam || !v.email || !v.bericht) {
+        setStatus('Vul in ieder geval je naam, e-mailadres en bericht in.', 'error');
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) {
+        setStatus('Dat e-mailadres lijkt niet te kloppen — kijk er even naar.', 'error');
+        return;
+      }
+
+      // Geen access key? Dan nette mailto-fallback met vooringevuld bericht.
+      if (!accessKey) {
+        const subject = encodeURIComponent(`Aanvraag via fotograafpeter.nl — ${v.dienst || 'algemeen'}`);
+        const body = encodeURIComponent(
+          `Naam: ${v.naam}\n` +
+          (v.bedrijf ? `Bedrijf: ${v.bedrijf}\n` : '') +
+          `E-mail: ${v.email}\n` +
+          (v.telefoon ? `Telefoon: ${v.telefoon}\n` : '') +
+          (v.dienst ? `Dienst: ${v.dienst}\n` : '') +
+          `\n${v.bericht}`
+        );
+        window.location.href = `mailto:${mailTo}?subject=${subject}&body=${body}`;
+        setStatus('Je e-mailprogramma opent nu met je bericht. Verstuur \'m daar — dan komt hij direct bij Peter aan.', 'ok');
+        return;
+      }
+
+      // Versturen via Web3Forms
+      submitBtn.disabled = true;
+      btnLabel.textContent = 'Versturen…';
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: accessKey,
+            subject: `Aanvraag via fotograafpeter.nl — ${v.dienst || 'algemeen'}`,
+            from_name: v.naam,
+            naam: v.naam,
+            bedrijf: v.bedrijf,
+            email: v.email,
+            telefoon: v.telefoon,
+            dienst: v.dienst,
+            bericht: v.bericht,
+          }),
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          form.reset();
+          setStatus('Bedankt! Je bericht is verstuurd — ik reageer binnen één werkdag.', 'ok');
+        } else {
+          setStatus('Er ging iets mis bij het versturen. Probeer het nog eens, of mail direct naar ' + mailTo + '.', 'error');
+        }
+      } catch {
+        setStatus('Er ging iets mis bij het versturen. Probeer het nog eens, of mail direct naar ' + mailTo + '.', 'error');
+      } finally {
+        submitBtn.disabled = false;
+        btnLabel.textContent = 'Verstuur bericht';
+      }
+    });
+  }
+</script>
+
 <style>
   .contact-section {
     padding-block: clamp(3rem, 6vw, 5rem);
+  }
+
+  .form-status {
+    margin-top: 1rem;
+    padding: 0.85rem 1.1rem;
+    border-radius: var(--radius);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+  .form-status[data-type='ok'] {
+    background: #e8f5ec;
+    color: #1e7d3f;
+    border: 1px solid #bfe3cb;
+  }
+  .form-status[data-type='error'] {
+    background: #fbeaea;
+    color: #b03434;
+    border: 1px solid #f0c8c8;
   }
 
   .contact-grid {
